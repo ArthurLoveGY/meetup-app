@@ -78,16 +78,12 @@ export default defineConfig<'webpack5'>(async (merge, { command: _command, mode:
           enable: false,
         },
       },
-      stylelint: {
-        enable: false,
-      },
     },
   }
 
   if (process.env.NODE_ENV === 'production') {
     return merge({}, baseConfig, {
       mini: {
-        ...baseConfig.mini,
         uglify: {
           enable: true,
           config: {
