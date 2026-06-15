@@ -1,0 +1,136 @@
+.comment-replies {
+  min-height: 100vh;
+  background: #F5F5F5;
+  padding-bottom: 120px;
+
+  &__header {
+    background: #FF6B35;
+    background: #FF6B35;
+    padding: 32px 24px 24px;
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__scroll {
+    height: calc(100vh - 240px);
+  }
+
+  &__comment {
+    display: flex;
+    background: #FFFFFF;
+    padding: 24px;
+    margin: 24px;
+    border-radius: 24px;
+  }
+
+  &__comment-content {
+    flex: 1;
+    margin-left: 24px;
+  }
+
+  &__comment-name {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333333;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  &__comment-text {
+    font-size: 28px;
+    color: #666666;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  &__comment-time {
+    font-size: 20px;
+    color: #999999;
+  }
+
+  &__divider {
+    padding: 24px;
+  }
+
+  &__divider-text {
+    font-size: 24px;
+    color: #999999;
+  }
+
+  &__replies {
+    padding: 0 24px;
+  }
+
+  &__reply {
+    display: flex;
+    background: #FFFFFF;
+    padding: 24px;
+    margin-bottom: 16px;
+    border-radius: 24px;
+  }
+
+  &__reply-content {
+    flex: 1;
+    margin-left: 24px;
+  }
+
+  &__reply-name {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333333;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  &__reply-text {
+    font-size: 28px;
+    color: #666666;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  &__reply-time {
+    font-size: 20px;
+    color: #999999;
+  }
+
+  &__input-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #FFFFFF;
+    padding: 24px;
+    display: flex;
+    gap: 16px;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  &__input {
+    flex: 1;
+    height: 80px;
+    background: #F5F5F5;
+    border-radius: 999px;
+    padding: 0 24px;
+    font-size: 28px;
+  }
+
+  &__send {
+    background: #FF6B35;
+    padding: 0 32px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__send-text {
+    font-size: 28px;
+    color: #fff;
+    font-weight: 600;
+  }
+}
