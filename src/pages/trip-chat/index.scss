@@ -1,0 +1,120 @@
+.trip-chat {
+  min-height: 100vh;
+  background: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    background: #FF6B35;
+    background: #FF6B35;
+    padding: 32px 24px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__count {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  &__scroll {
+    flex: 1;
+    height: calc(100vh - 240px);
+  }
+
+  &__messages {
+    padding: 24px;
+  }
+
+  &__message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 24px;
+
+    &--me {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__message-content {
+    max-width: 70%;
+    margin: 0 16px;
+
+    .trip-chat__message--me & {
+      align-items: flex-end;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__message-name {
+    font-size: 20px;
+    color: #999999;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  &__message-bubble {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 16px 24px;
+
+    .trip-chat__message--me & {
+      background: #FF6B35;
+    }
+  }
+
+  &__message-text {
+    font-size: 28px;
+    color: #333333;
+
+    .trip-chat__message--me & {
+      color: #fff;
+    }
+  }
+
+  &__message-time {
+    font-size: 20px;
+    color: #999999;
+    margin-top: 4px;
+  }
+
+  &__input-bar {
+    background: #FFFFFF;
+    padding: 24px;
+    display: flex;
+    gap: 16px;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  &__input {
+    flex: 1;
+    height: 80px;
+    background: #F5F5F5;
+    border-radius: 999px;
+    padding: 0 24px;
+    font-size: 28px;
+  }
+
+  &__send {
+    background: #FF6B35;
+    padding: 0 32px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__send-text {
+    font-size: 28px;
+    color: #fff;
+    font-weight: 600;
+  }
+}

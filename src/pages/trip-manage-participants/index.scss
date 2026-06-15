@@ -1,0 +1,228 @@
+.manage-participants {
+  min-height: 100vh;
+  background: #F5F5F5;
+
+  &__header {
+    background: #FF6B35;
+    padding: 32px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__count {
+    font-size: 28px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  &__batch-toggle {
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 999px;
+  }
+
+  &__batch-toggle-text {
+    font-size: 24px;
+    color: #fff;
+  }
+
+  &__tabs {
+    display: flex;
+    background: #FFFFFF;
+    padding: 4px;
+    margin: 24px;
+    border-radius: 24px;
+  }
+
+  &__tab {
+    flex: 1;
+    text-align: center;
+    padding: 12px 0;
+    border-radius: 16px;
+
+    &--active {
+      background: #FF6B35;
+    }
+  }
+
+  &__tab-text {
+    font-size: 24px;
+    color: #666666;
+
+    .manage-participants__tab--active & {
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+
+  // Batch operations bar
+  &__batch-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #FFFFFF;
+    padding: 16px 24px;
+    margin: 0 24px 16px;
+    border-radius: 16px;
+  }
+
+  &__select-all {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__select-all-text {
+    font-size: 28px;
+    color: #333333;
+  }
+
+  &__checkbox {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #CCCCCC;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--checked {
+      background: #FF6B35;
+      border-color: #FF6B35;
+    }
+  }
+
+  &__check {
+    font-size: 24px;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  &__batch-actions {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__batch-btn {
+    padding: 12px 24px;
+    border-radius: 999px;
+
+    &--approve {
+      background: #52C41A;
+    }
+
+    &--reject {
+      background: #FF4D4F;
+    }
+  }
+
+  &__batch-btn-text {
+    font-size: 24px;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  &__scroll {
+    height: calc(100vh - 380px);
+  }
+
+  &__list {
+    padding: 0 24px 24px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+
+  &__item-check {
+    margin-right: 16px;
+  }
+
+  &__info {
+    flex: 1;
+    margin-left: 24px;
+    min-width: 0;
+  }
+
+  &__name {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333333;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  &__note {
+    font-size: 20px;
+    color: #999999;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  &__action {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--approve {
+      background: #52C41A;
+    }
+
+    &--reject {
+      background: #F5F5F5;
+      border: 1px solid #EEEEEE;
+    }
+
+    &--remove {
+      background: #F5F5F5;
+      border: 1px solid #FF4D4F;
+      width: auto;
+      padding: 0 16px;
+      border-radius: 999px;
+    }
+  }
+
+  &__action-text {
+    font-size: 24px;
+    font-weight: 600;
+
+    .manage-participants__action--approve & {
+      color: #fff;
+    }
+
+    .manage-participants__action--reject & {
+      color: #999999;
+    }
+
+    .manage-participants__action--remove & {
+      font-size: 20px;
+      color: #FF4D4F;
+    }
+  }
+}

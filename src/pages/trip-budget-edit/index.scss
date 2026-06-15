@@ -1,0 +1,144 @@
+.trip-budget-edit {
+  min-height: 100vh;
+  background: #F5F5F5;
+  padding-bottom: 120px;
+
+  &__header {
+    background: #FF6B35;
+    background: #FF6B35;
+    padding: 32px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__save {
+    padding: 8px 24px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+  }
+
+  &__save-text {
+    font-size: 24px;
+    color: #fff;
+  }
+
+  &__total {
+    background: #FFFFFF;
+    padding: 32px;
+    margin: 24px;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__total-label {
+    font-size: 32px;
+    color: #333333;
+  }
+
+  &__total-value {
+    font-size: 44px;
+    font-weight: 700;
+    color: #FF6B35;
+  }
+
+  &__scroll {
+    height: calc(100vh - 320px);
+  }
+
+  &__list {
+    padding: 0 24px 24px;
+  }
+
+  &__item {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  &__item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__item-category {
+    padding: 6px 16px;
+    background: rgba(255, 107, 53, 0.1);
+    border-radius: 999px;
+  }
+
+  &__item-category-text {
+    font-size: 20px;
+    color: #FF6B35;
+  }
+
+  &__item-remove {
+    padding: 6px 16px;
+    background: rgba(255, 77, 79, 0.1);
+    border-radius: 999px;
+  }
+
+  &__item-remove-text {
+    font-size: 20px;
+    color: #FF4D4F;
+  }
+
+  &__item-fields {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__item-field {
+    flex: 1;
+  }
+
+  &__item-label {
+    font-size: 20px;
+    color: #999999;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  &__item-input {
+    width: 100%;
+    height: 72px;
+    background: #F5F5F5;
+    border-radius: 16px;
+    padding: 0 24px;
+    font-size: 28px;
+    box-sizing: border-box;
+  }
+
+  &__add {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #FFFFFF;
+    padding: 24px;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  &__add-text {
+    display: block;
+    width: 100%;
+    padding: 24px 0;
+    background: #FF6B35;
+    border-radius: 24px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    color: #fff;
+  }
+}

@@ -1,0 +1,128 @@
+.trip-checklist-edit {
+  min-height: 100vh;
+  background: #F5F5F5;
+  padding-bottom: 120px;
+
+  &__header {
+    background: #FF6B35;
+    background: #FF6B35;
+    padding: 32px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__save {
+    padding: 8px 24px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+  }
+
+  &__save-text {
+    font-size: 24px;
+    color: #fff;
+  }
+
+  &__scroll {
+    height: calc(100vh - 240px);
+  }
+
+  &__list {
+    padding: 24px;
+  }
+
+  &__item {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  &__item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__item-required {
+    padding: 6px 16px;
+    background: #F5F5F5;
+    border-radius: 999px;
+    border: 1px solid #EEEEEE;
+
+    &--active {
+      background: rgba(255, 107, 53, 0.1);
+      border-color: #FF6B35;
+    }
+  }
+
+  &__item-required-text {
+    font-size: 20px;
+    color: #666666;
+
+    .trip-checklist-edit__item-required--active & {
+      color: #FF6B35;
+    }
+  }
+
+  &__item-remove {
+    padding: 6px 16px;
+    background: rgba(255, 77, 79, 0.1);
+    border-radius: 999px;
+  }
+
+  &__item-remove-text {
+    font-size: 20px;
+    color: #FF4D4F;
+  }
+
+  &__item-field {
+    margin-bottom: 16px;
+  }
+
+  &__item-label {
+    font-size: 20px;
+    color: #999999;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  &__item-input {
+    width: 100%;
+    height: 72px;
+    background: #F5F5F5;
+    border-radius: 16px;
+    padding: 0 24px;
+    font-size: 28px;
+    box-sizing: border-box;
+  }
+
+  &__add {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #FFFFFF;
+    padding: 24px;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  &__add-text {
+    display: block;
+    width: 100%;
+    padding: 24px 0;
+    background: #FF6B35;
+    border-radius: 24px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    color: #fff;
+  }
+}

@@ -1,0 +1,516 @@
+.trip-detail {
+  min-height: 100vh;
+  background: #F5F5F5;
+  padding-bottom: 140px;
+
+  &__scroll {
+    height: 100vh;
+  }
+
+  &__cover {
+    width: 100%;
+    height: 400px;
+  }
+
+  &__content {
+    padding: 24px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  &__type-tag {
+    background: rgba(255, 107, 53, 0.1);
+    padding: 6px 16px;
+    border-radius: 999px;
+  }
+
+  &__type-text {
+    font-size: 24px;
+    color: #FF6B35;
+  }
+
+  &__status {
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: #52C41A;
+  }
+
+  &__status-text {
+    font-size: 24px;
+    color: #fff;
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 32px;
+    display: block;
+  }
+
+  &__meta {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+
+  &__meta-item {
+    display: flex;
+    padding: 16px 0;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #F0F0F0;
+    }
+  }
+
+  &__meta-icon {
+    font-size: 36px;
+    margin-right: 24px;
+    flex-shrink: 0;
+  }
+
+  &__meta-content {
+    flex: 1;
+  }
+
+  &__meta-label {
+    font-size: 20px;
+    color: #999999;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  &__meta-value {
+    font-size: 28px;
+    color: #333333;
+    display: block;
+  }
+
+  &__meta-sub {
+    font-size: 24px;
+    color: #666666;
+    display: block;
+    margin-top: 4px;
+  }
+
+  &__countdown {
+    display: inline-block;
+    font-size: 20px;
+    color: #FF6B35;
+    background: rgba(255, 107, 53, 0.1);
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-top: 8px;
+  }
+
+  &__section {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  &__section-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  &__description {
+    font-size: 28px;
+    color: #666666;
+    line-height: 1.6;
+    white-space: pre-wrap;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__tag {
+    background: rgba(255, 107, 53, 0.1);
+    padding: 6px 16px;
+    border-radius: 999px;
+  }
+
+  &__tag-text {
+    font-size: 24px;
+    color: #FF6B35;
+  }
+
+  &__tabs {
+    display: flex;
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 4px;
+    margin-bottom: 24px;
+  }
+
+  &__tab {
+    flex: 1;
+    text-align: center;
+    padding: 16px 0;
+    border-radius: 16px;
+
+    &--active {
+      background: #FF6B35;
+    }
+  }
+
+  &__tab-text {
+    font-size: 24px;
+    color: #666666;
+
+    .trip-detail__tab--active & {
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+
+  &__creator {
+    margin-bottom: 32px;
+  }
+
+  &__creator-info {
+    display: flex;
+    align-items: center;
+  }
+
+  &__creator-detail {
+    margin-left: 24px;
+  }
+
+  &__creator-name {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333333;
+    display: block;
+  }
+
+  &__creator-trips {
+    font-size: 24px;
+    color: #999999;
+    display: block;
+    margin-top: 4px;
+  }
+
+  &__participants {
+    margin-top: 32px;
+  }
+
+  &__participants-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__manage-btn {
+    padding: 6px 16px;
+    background: #FF6B35;
+    border-radius: 999px;
+  }
+
+  &__manage-btn-text {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  &__participant-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  &__participant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+  }
+
+  &__participant-name {
+    font-size: 20px;
+    color: #666666;
+    margin-top: 8px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  &__more-participants {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+  }
+
+  &__more-text {
+    font-size: 20px;
+    color: #FF6B35;
+  }
+
+  &__comments-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__add-comment {
+    background: #FF6B35;
+    padding: 8px 20px;
+    border-radius: 999px;
+  }
+
+  &__add-comment-text {
+    font-size: 24px;
+    color: #fff;
+  }
+
+  &__timeline {
+    padding-left: 24px;
+  }
+
+  &__checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #FFFFFF;
+    padding: 24px;
+    display: flex;
+    gap: 24px;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+    z-index: 100;
+  }
+
+  &__btn {
+    flex: 1;
+    padding: 24px 0;
+    border-radius: 24px;
+    text-align: center;
+
+    &--join {
+      background: #FF6B35;
+    }
+
+    &--edit {
+      background: #FF6B35;
+    }
+
+    &--share {
+      background: #F5F5F5;
+      border: 2px solid #EEEEEE;
+    }
+
+    &--leave {
+      background: #F5F5F5;
+      border: 2px solid #FF4D4F;
+    }
+  }
+
+  &__btn-text {
+    font-size: 28px;
+    font-weight: 600;
+
+    .trip-detail__btn--join &,
+    .trip-detail__btn--edit & {
+      color: #fff;
+    }
+
+    .trip-detail__btn--leave & {
+      color: #FF4D4F;
+    }
+  }
+
+  &__mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__status-modal {
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 24px 24px 0 0;
+    padding: 32px;
+  }
+
+  &__status-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333333;
+    text-align: center;
+    margin-bottom: 32px;
+    display: block;
+  }
+}
+
+.timeline-item {
+  display: flex;
+  padding-bottom: 32px;
+
+  &--last {
+    padding-bottom: 0;
+  }
+
+  &__time {
+    width: 100px;
+    flex-shrink: 0;
+  }
+
+  &__time-text {
+    font-size: 24px;
+    color: #666666;
+    font-weight: 600;
+  }
+
+  &__dot-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 24px;
+    flex-shrink: 0;
+  }
+
+  &__dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #FF6B35;
+    flex-shrink: 0;
+  }
+
+  &__line {
+    width: 2px;
+    flex: 1;
+    background: #EEEEEE;
+    margin-top: 8px;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333333;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  &__desc {
+    font-size: 24px;
+    color: #666666;
+    display: block;
+  }
+
+  &__location {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+  }
+
+  &__location-icon {
+    font-size: 24px;
+    margin-right: 4px;
+  }
+
+  &__location-text {
+    font-size: 20px;
+    color: #FF6B35;
+  }
+}
+
+.checklist-item {
+  display: flex;
+  padding: 24px;
+  background: #F5F5F5;
+  border-radius: 16px;
+
+  &--checked {
+    opacity: 0.6;
+  }
+
+  &__checkbox {
+    margin-right: 24px;
+    flex-shrink: 0;
+  }
+
+  &__box {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 2px solid #EEEEEE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--checked {
+      background: #FF6B35;
+      border-color: #FF6B35;
+    }
+  }
+
+  &__check {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: 28px;
+    color: #333333;
+    display: block;
+  }
+
+  &__desc {
+    font-size: 24px;
+    color: #999999;
+    display: block;
+    margin-top: 4px;
+  }
+
+  &__required {
+    display: inline-block;
+    margin-top: 8px;
+    background: rgba(255, 77, 79, 0.1);
+    padding: 2px 8px;
+    border-radius: 999px;
+  }
+
+  &__required-text {
+    font-size: 20px;
+    color: #FF4D4F;
+  }
+}

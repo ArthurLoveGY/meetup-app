@@ -1,0 +1,157 @@
+.trip-vote-detail {
+  min-height: 100vh;
+  background: #F5F5F5;
+
+  &__header {
+    background: #FF6B35;
+    background: #FF6B35;
+    padding: 32px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+    flex: 1;
+  }
+
+  &__status {
+    padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+  }
+
+  &__status-text {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  &__scroll {
+    height: calc(100vh - 120px);
+  }
+
+  &__info {
+    background: #FFFFFF;
+    margin: 24px;
+    border-radius: 24px;
+    padding: 24px;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 24px;
+  }
+
+  &__icon {
+    font-size: 48px;
+    margin-right: 24px;
+  }
+
+  &__meta-content {
+    flex: 1;
+  }
+
+  &__creator {
+    font-size: 28px;
+    color: #333333;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  &__time {
+    font-size: 24px;
+    color: #999999;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  &__deadline {
+    font-size: 24px;
+    color: #FAAD14;
+    display: block;
+  }
+
+  &__desc {
+    font-size: 28px;
+    color: #666666;
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  &__total {
+    font-size: 24px;
+    color: #999999;
+    display: block;
+  }
+
+  &__options {
+    padding: 0 24px 24px;
+  }
+
+  &__option {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 24px;
+    border: 2px solid transparent;
+
+    &--selected {
+      border-color: #FF6B35;
+      background: rgba(255, 107, 53, 0.05);
+    }
+  }
+
+  &__option-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__option-text {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333333;
+  }
+
+  &__option-count {
+    font-size: 24px;
+    color: #999999;
+  }
+
+  &__option-bar {
+    height: 12px;
+    background: #F0F0F0;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  &__option-bar-fill {
+    height: 100%;
+    background: #FF6B35;
+    border-radius: 6px;
+    transition: width 0.3s;
+  }
+
+  &__option-voters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  &__voter {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__voter-name {
+    font-size: 20px;
+    color: #666666;
+  }
+}

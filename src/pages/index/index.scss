@@ -1,0 +1,136 @@
+.trip-feed {
+  min-height: 100vh;
+  background: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    padding: 32px 24px 16px;
+    background: #FF6B35;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+    display: block;
+  }
+
+  &__subtitle {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 4px;
+    display: block;
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+    gap: 12px;
+  }
+
+  &__search-input {
+    flex: 1;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 32px;
+    padding: 0 24px;
+    font-size: 26px;
+  }
+
+  &__search-btn {
+    height: 64px;
+    padding: 0 24px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__search-btn-text {
+    font-size: 26px;
+    color: #fff;
+  }
+
+  &__filters {
+    margin-top: 16px;
+    white-space: nowrap;
+  }
+
+  &__filter-list {
+    display: inline-flex;
+    gap: 12px;
+    padding-bottom: 4px;
+  }
+
+  &__filter {
+    display: inline-flex;
+    align-items: center;
+    height: 52px;
+    padding: 0 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 26px;
+
+    &--active {
+      background: #fff;
+    }
+  }
+
+  &__filter-text {
+    font-size: 24px;
+    color: #fff;
+    white-space: nowrap;
+  }
+
+  &__filter--active &__filter-text {
+    color: #FF6B35;
+  }
+
+  &__scroll {
+    flex: 1;
+    height: 0;
+  }
+
+  &__list {
+    padding: 24px;
+  }
+
+  &__loading {
+    padding: 24px 0;
+  }
+
+  &__end {
+    padding: 32px 0;
+    text-align: center;
+  }
+
+  &__end-text {
+    font-size: 24px;
+    color: #999999;
+  }
+
+  &__fab {
+    position: absolute;
+    right: 32px;
+    bottom: 200px;
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    background: #FF6B35;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4);
+    z-index: 100;
+  }
+
+  &__fab-icon {
+    font-size: 56px;
+    color: #fff;
+    font-weight: 300;
+    line-height: 1;
+  }
+}

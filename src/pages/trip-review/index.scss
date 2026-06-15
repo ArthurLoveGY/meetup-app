@@ -1,0 +1,190 @@
+.trip-review {
+  min-height: 100vh;
+  background: #F5F5F5;
+
+  &__header {
+    background: #FF6B35;
+    padding: 32px 24px 24px;
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__scroll {
+    height: calc(100vh - 120px);
+  }
+
+  &__section {
+    background: #FFFFFF;
+    padding: 24px;
+    margin: 24px;
+    border-radius: 24px;
+  }
+
+  &__trip-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #333333;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  &__date {
+    font-size: 28px;
+    color: #666666;
+  }
+
+  &__section-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  &__participants {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  &__participant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__participant-name {
+    font-size: 20px;
+    color: #666666;
+    margin-top: 8px;
+  }
+
+  // Photos area
+  &__photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  &__photo-item {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  &__photo-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  &__photo-remove {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__photo-remove-text {
+    font-size: 24px;
+    color: #fff;
+  }
+
+  &__photo-add {
+    aspect-ratio: 1;
+    background: #F5F5F5;
+    border-radius: 16px;
+    border: 2px dashed #CCCCCC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__photo-add-icon {
+    font-size: 56px;
+    color: #CCCCCC;
+    line-height: 1;
+  }
+
+  &__photo-add-text {
+    font-size: 20px;
+    color: #999999;
+    margin-top: 8px;
+  }
+
+  &__photo-hint {
+    font-size: 24px;
+    color: #999999;
+    text-align: center;
+    margin-top: 16px;
+    display: block;
+  }
+
+  &__summary {
+    font-size: 28px;
+    color: #666666;
+    line-height: 1.6;
+  }
+
+  &__highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__highlight {
+    display: flex;
+    align-items: center;
+  }
+
+  &__highlight-icon {
+    font-size: 24px;
+    margin-right: 16px;
+  }
+
+  &__highlight-text {
+    font-size: 28px;
+    color: #333333;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  &__action {
+    flex: 1;
+    padding: 24px 0;
+    background: #FFFFFF;
+    border: 2px solid #FF6B35;
+    border-radius: 24px;
+    text-align: center;
+
+    &--share {
+      background: #FF6B35;
+    }
+  }
+
+  &__action-text {
+    font-size: 28px;
+    font-weight: 600;
+    color: #FF6B35;
+
+    .trip-review__action--share & {
+      color: #fff;
+    }
+  }
+}

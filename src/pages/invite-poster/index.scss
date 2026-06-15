@@ -1,0 +1,129 @@
+.invite-poster {
+  min-height: 100vh;
+  background: #F5F5F5;
+
+  &__header {
+    background: #FF6B35;
+    background: #FF6B35;
+    padding: 32px 24px 24px;
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__preview {
+    padding: 24px;
+  }
+
+  &__poster {
+    background: #FFFFFF;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  &__poster-header {
+    background: #FF6B35;
+    background: #FF6B35;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__poster-logo {
+    font-size: 48px;
+    margin-right: 16px;
+  }
+
+  &__poster-app {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__poster-content {
+    padding: 32px;
+  }
+
+  &__poster-title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #333333;
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  &__poster-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &__poster-icon {
+    font-size: 24px;
+    margin-right: 16px;
+  }
+
+  &__poster-text {
+    font-size: 28px;
+    color: #666666;
+  }
+
+  &__poster-participants {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid #F0F0F0;
+  }
+
+  &__poster-participants-label {
+    font-size: 24px;
+    color: #999999;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  &__poster-avatars {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__poster-footer {
+    background: #F5F5F5;
+    padding: 24px;
+    text-align: center;
+  }
+
+  &__poster-footer-text {
+    font-size: 24px;
+    color: #999999;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  &__action {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px;
+    background: #FFFFFF;
+    border-radius: 24px;
+  }
+
+  &__action-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+
+  &__action-text {
+    font-size: 24px;
+    color: #333333;
+  }
+}

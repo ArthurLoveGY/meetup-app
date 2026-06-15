@@ -1,0 +1,124 @@
+.share-invite {
+  min-height: 100vh;
+  background: #F5F5F5;
+
+  &__header {
+    background: #FF6B35;
+    background: #FF6B35;
+    padding: 32px 24px 24px;
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__card {
+    margin: 24px;
+    background: #FFFFFF;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  &__cover {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-color: #FF8F66;
+  }
+
+  &__card-content {
+    padding: 24px;
+  }
+
+  &__card-tag {
+    display: inline-block;
+    background: rgba(255, 107, 53, 0.1);
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 16px;
+  }
+
+  &__card-tag-text {
+    font-size: 20px;
+    color: #FF6B35;
+  }
+
+  &__card-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #333333;
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  &__card-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  &__card-icon {
+    font-size: 24px;
+    margin-right: 8px;
+  }
+
+  &__card-text {
+    font-size: 24px;
+    color: #666666;
+  }
+
+  &__card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid #F0F0F0;
+  }
+
+  &__card-creator {
+    display: flex;
+    align-items: center;
+  }
+
+  &__card-creator-name {
+    font-size: 24px;
+    color: #666666;
+    margin-left: 8px;
+  }
+
+  &__card-participants {
+    font-size: 20px;
+    color: #999999;
+  }
+
+  &__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  &__action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    background: #FFFFFF;
+    border-radius: 24px;
+  }
+
+  &__action-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+
+  &__action-text {
+    font-size: 24px;
+    color: #333333;
+  }
+}

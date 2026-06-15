@@ -1,0 +1,139 @@
+import { View, Text } from '@tarojs/components'
+import { useLoad, useRouter } from '@tarojs/taro'
+import { useState, useCallback } from 'react'
+import { UserAvatar, LoadingView, EmptyState } from '../../components'
+import { useTripStore } from '../../stores'
+import { platformService } from '../../platform'
+import { getSmartDate, getDayOfWeek } from '../../utils/date'
+import { getTripTypeLabel, getCostTypeLabel } from '../../utils/permission'
+import './index.scss'
+
+export default function ShareInvite() {
+  const router = useRouter()
+  const { currentTrip, fetchTripDetail } = useTripStore()
+  const [isLoading, setIsLoading] = useState(true)
+
+  useLoad(() => {
+    const tripId = router.params.id
+    if (tripId) {
+      fetchTripDetail(tripId).finally(() => setIsLoading(false))
+    } else {
+      setIsLoading(false)
+    }
+  })
+
+  const handleShareToFriend = useCallback(async () => {
+    if (!currentTrip) return
+    await platformService.shareToFriend({
+      title: currentTrip.title,
+      path: `/pages/trip-detail/index?id=${currentTrip.id}`,
+    })
+  }, [currentTrip])
+
+  const handleShareToTimeline = useCallback(async () => {
+    if (!currentTrip) return
+    await platformService.shareToTimeline({
+      title: currentTrip.title,
+      path: `/pages/trip-detail/index?id=${currentTrip.id}`,
+    })
+  }, [currentTrip])
+
+  const handleCopyLink = useCallback(async () => {
+    if (!currentTrip) return
+    platformService.showToast({ title: '链接已复制', icon: 'success' })
+  }, [currentTrip])
+
+  const handleGeneratePoster = useCallback(() => {
+    if (!currentTrip) return
+    platformService.navigateTo('/pages/invite-poster/index?id=' + currentTrip.id)
+  }, [currentTrip])
+
+  if (isLoading) {
+    return <LoadingView text='加载行程...' />
+  }
+
+  if (!currentTrip) {
+    return (
+      <EmptyState
+        icon='😅'
+        title='行程不存在'
+        description=''
+        actionText='返回'
+        onAction={() => platformService.navigateBack()}
+      />
+    )
+  }
+
+  const trip = currentTrip
+
+  return (
+    <View className='share-invite'>
+      <View className='share-invite__header'>
+        <Text className='share-invite__title'>邀请好友</Text>
+      </View>
+
+      <View className='share-invite__card'>
+        {trip.coverUrl && (
+          <View className='share-invite__cover' style={{ backgroundImage: `url(${trip.coverUrl})` }} />
+        )}
+        <View className='share-invite__card-content'>
+          <View className='share-invite__card-tag'>
+            <Text className='share-invite__card-tag-text'>{getTripTypeLabel(trip.type)}</Text>
+          </View>
+          <Text className='share-invite__card-title'>{trip.title}</Text>
+          <View className='share-invite__card-info'>
+            <Text className='share-invite__card-icon'>📅</Text>
+            <Text className='share-invite__card-text'>
+              {getSmartDate(trip.startTime)} {getDayOfWeek(trip.startTime)}
+            </Text>
+          </View>
+          {trip.locationName && (
+            <View className='share-invite__card-info'>
+              <Text className='share-invite__card-icon'>📍</Text>
+              <Text className='share-invite__card-text'>{trip.locationName}</Text>
+            </View>
+          )}
+          <View className='share-invite__card-info'>
+            <Text className='share-invite__card-icon'>💰</Text>
+            <Text className='share-invite__card-text'>
+              {getCostTypeLabel(trip.costType, trip.estimatedCost)}
+            </Text>
+          </View>
+          <View className='share-invite__card-footer'>
+            <View className='share-invite__card-creator'>
+              <UserAvatar
+                userId={trip.creator.id}
+                nickname={trip.creator.nickname}
+                avatarUrl={trip.creator.avatarUrl}
+                size='small'
+              />
+              <Text className='share-invite__card-creator-name'>{trip.creator.nickname}</Text>
+            </View>
+            <Text className='share-invite__card-participants'>
+              {trip.participantCount}人已参加
+            </Text>
+          </View>
+        </View>
+      </View>
+
+      <View className='share-invite__actions'>
+        <View className='share-invite__action' onClick={handleShareToFriend}>
+          <Text className='share-invite__action-icon'>💬</Text>
+          <Text className='share-invite__action-text'>分享给好友</Text>
+        </View>
+        <View className='share-invite__action' onClick={handleShareToTimeline}>
+          <Text className='share-invite__action-icon'>📱</Text>
+          <Text className='share-invite__action-text'>分享到朋友圈</Text>
+        </View>
+        <View className='share-invite__action' onClick={handleCopyLink}>
+          <Text className='share-invite__action-icon'>🔗</Text>
+          <Text className='share-invite__action-text'>复制链接</Text>
+        </View>
+        <View className='share-invite__action' onClick={handleGeneratePoster}>
+          <Text className='share-invite__action-icon'>🖼️</Text>
+          <Text className='share-invite__action-text'>生成海报</Text>
+        </View>
+      </View>
+    </View>
+  )
+}
