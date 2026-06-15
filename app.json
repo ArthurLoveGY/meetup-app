@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "trip-circle",
+    "slug": "trip-circle",
+    "version": "0.1.0",
+    "description": "TripCircle - 行程朋友圈，一个围绕熟人小圈子的行程发布与协作平台",
+    "sdkVersion": "50.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "android": {
+      "package": "com.anonymous.tripcircle"
+    }
+  }
+}
