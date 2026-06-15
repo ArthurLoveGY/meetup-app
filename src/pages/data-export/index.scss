@@ -1,0 +1,132 @@
+.data-export {
+  min-height: 100vh;
+  background: #F5F5F5;
+  padding-bottom: 140px;
+
+  &__header {
+    background: #FF6B35;
+    background: #FF6B35;
+    padding: 32px 24px 24px;
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__scroll {
+    height: calc(100vh - 260px);
+  }
+
+  &__info {
+    background: #FFFFFF;
+    margin: 24px;
+    border-radius: 24px;
+    padding: 24px;
+  }
+
+  &__info-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333333;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  &__info-text {
+    font-size: 28px;
+    color: #666666;
+    line-height: 1.5;
+  }
+
+  &__types {
+    background: #FFFFFF;
+    margin: 0 24px 24px;
+    border-radius: 24px;
+    padding: 24px;
+  }
+
+  &__type {
+    display: flex;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #F0F0F0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__type-icon {
+    font-size: 36px;
+    margin-right: 24px;
+    flex-shrink: 0;
+  }
+
+  &__type-content {
+    flex: 1;
+  }
+
+  &__type-name {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333333;
+    display: block;
+  }
+
+  &__type-desc {
+    font-size: 24px;
+    color: #999999;
+    display: block;
+    margin-top: 4px;
+  }
+
+  &__result {
+    background: rgba(82, 196, 26, 0.1);
+    margin: 0 24px 24px;
+    border-radius: 24px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__result-icon {
+    font-size: 48px;
+    margin-right: 24px;
+  }
+
+  &__result-text {
+    font-size: 28px;
+    color: #52C41A;
+    flex: 1;
+  }
+
+  &__bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #FFFFFF;
+    padding: 24px;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  &__btn {
+    width: 100%;
+    padding: 24px 0;
+    background: #FF6B35;
+    border-radius: 24px;
+    text-align: center;
+
+    &--loading {
+      opacity: 0.6;
+    }
+  }
+
+  &__btn-text {
+    font-size: 32px;
+    font-weight: 600;
+    color: #fff;
+  }
+}

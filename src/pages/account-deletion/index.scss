@@ -1,0 +1,162 @@
+.account-deletion {
+  min-height: 100vh;
+  background: #F5F5F5;
+  padding-bottom: 140px;
+
+  &__header {
+    background: #FF4D4F;
+    background: #FF4D4F;
+    padding: 32px 24px 24px;
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__scroll {
+    height: calc(100vh - 260px);
+  }
+
+  &__warning {
+    background: #FFFFFF;
+    margin: 24px;
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__warning-icon {
+    font-size: 48px;
+    margin-right: 24px;
+  }
+
+  &__warning-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #FF4D4F;
+    flex: 1;
+  }
+
+  &__consequences {
+    background: #FFFFFF;
+    margin: 0 24px 24px;
+    border-radius: 24px;
+    padding: 24px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__item-icon {
+    font-size: 24px;
+    margin-right: 16px;
+    flex-shrink: 0;
+  }
+
+  &__item-text {
+    font-size: 28px;
+    color: #666666;
+    line-height: 1.5;
+  }
+
+  &__info {
+    background: #FFFFFF;
+    margin: 0 24px 24px;
+    border-radius: 24px;
+    padding: 24px;
+  }
+
+  &__info-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333333;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  &__info-item {
+    font-size: 28px;
+    color: #666666;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  &__confirm {
+    background: #FFFFFF;
+    margin: 0 24px 24px;
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__checkbox {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 2px solid #EEEEEE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 24px;
+    flex-shrink: 0;
+
+    &--checked {
+      background: #FF4D4F;
+      border-color: #FF4D4F;
+    }
+  }
+
+  &__check {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  &__confirm-text {
+    font-size: 28px;
+    color: #333333;
+  }
+
+  &__bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #FFFFFF;
+    padding: 24px;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  &__btn {
+    width: 100%;
+    padding: 24px 0;
+    background: #FF4D4F;
+    border-radius: 24px;
+    text-align: center;
+
+    &--disabled {
+      background: #CCCCCC;
+    }
+
+    &--loading {
+      opacity: 0.6;
+    }
+  }
+
+  &__btn-text {
+    font-size: 32px;
+    font-weight: 600;
+    color: #fff;
+  }
+}

@@ -1,0 +1,171 @@
+.profile {
+  min-height: 100vh;
+  background: #F5F5F5;
+
+  &__scroll {
+    height: 100vh;
+  }
+
+  &__login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 48px;
+  }
+
+  &__login-icon {
+    font-size: 96px;
+    margin-bottom: 32px;
+  }
+
+  &__login-title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 16px;
+  }
+
+  &__login-desc {
+    font-size: 28px;
+    color: #999999;
+    margin-bottom: 48px;
+  }
+
+  &__login-btn {
+    width: 100%;
+    padding: 24px 0;
+    background: #07C160;
+    border-radius: 24px;
+    text-align: center;
+  }
+
+  &__login-btn-text {
+    font-size: 32px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  &__header {
+    background: #FF6B35;
+    background: #FF6B35;
+    padding: 48px 24px 32px;
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  &__user-info {
+    margin-left: 32px;
+    flex: 1;
+  }
+
+  &__user-name {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+    display: block;
+  }
+
+  &__user-bio {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    margin-top: 8px;
+  }
+
+  &__user-city {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    margin-top: 4px;
+  }
+
+  &__stats {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 24px 0;
+    margin-bottom: 32px;
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__stat-value {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__stat-label {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 4px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__action {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+  }
+
+  &__action-icon {
+    font-size: 28px;
+    margin-right: 8px;
+  }
+
+  &__action-text {
+    font-size: 24px;
+    color: #fff;
+  }
+
+  &__tabs {
+    display: flex;
+    background: #FFFFFF;
+    padding: 4px;
+    margin: 24px;
+    border-radius: 24px;
+  }
+
+  &__tab {
+    flex: 1;
+    text-align: center;
+    padding: 16px 0;
+    border-radius: 16px;
+
+    &--active {
+      background: #FF6B35;
+    }
+  }
+
+  &__tab-text {
+    font-size: 24px;
+    color: #666666;
+
+    .profile__tab--active & {
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+
+  &__trips {
+    padding: 0 24px 32px;
+  }
+}
