@@ -1,0 +1,55 @@
+.notification-detail {
+  min-height: 100vh;
+  background: #F5F5F5;
+
+  &__header {
+    background: #FF6B35;
+    background: #FF6B35;
+    padding: 32px 24px 24px;
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__content {
+    background: #FFFFFF;
+    margin: 24px;
+    border-radius: 24px;
+    padding: 24px;
+  }
+
+  &__meta {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #F0F0F0;
+  }
+
+  &__time {
+    font-size: 24px;
+    color: #999999;
+  }
+
+  &__text {
+    font-size: 28px;
+    color: #333333;
+    line-height: 1.8;
+    white-space: pre-wrap;
+  }
+
+  &__action {
+    margin: 24px;
+    padding: 24px 0;
+    background: #FF6B35;
+    border-radius: 24px;
+    text-align: center;
+  }
+
+  &__action-text {
+    font-size: 32px;
+    font-weight: 600;
+    color: #fff;
+  }
+}
