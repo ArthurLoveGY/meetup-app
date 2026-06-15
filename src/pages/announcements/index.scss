@@ -1,0 +1,52 @@
+.announcements {
+  min-height: 100vh;
+  background: #F5F5F5;
+
+  &__header {
+    background: #FF6B35;
+    background: #FF6B35;
+    padding: 32px 24px 24px;
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__scroll {
+    height: calc(100vh - 120px);
+  }
+
+  &__list {
+    padding: 24px;
+  }
+
+  &__item {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+
+  &__item-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333333;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  &__item-content {
+    font-size: 28px;
+    color: #666666;
+    line-height: 1.5;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  &__item-time {
+    font-size: 20px;
+    color: #999999;
+  }
+}

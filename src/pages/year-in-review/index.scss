@@ -1,0 +1,195 @@
+.year-in-review {
+  min-height: 100vh;
+  background: #F5F5F5;
+
+  &__header {
+    background: #FF6B35;
+    padding: 64px 24px 48px;
+    text-align: center;
+  }
+
+  &__year {
+    font-size: 80px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.3);
+    display: block;
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+    display: block;
+    margin-top: -20px;
+  }
+
+  &__subtitle {
+    font-size: 28px;
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    margin-top: 8px;
+  }
+
+  &__scroll {
+    height: calc(100vh - 200px);
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 24px;
+    margin-top: -40px;
+  }
+
+  &__stat {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  &__stat-value {
+    font-size: 48px;
+    font-weight: 700;
+    color: #FF6B35;
+    display: block;
+  }
+
+  &__stat-label {
+    font-size: 24px;
+    color: #999999;
+    display: block;
+    margin-top: 4px;
+  }
+
+  &__section {
+    background: #FFFFFF;
+    margin: 24px;
+    border-radius: 24px;
+    padding: 24px;
+  }
+
+  &__section-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  &__tag {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    background: rgba(255, 107, 53, 0.1);
+    border-radius: 999px;
+  }
+
+  &__tag-icon {
+    font-size: 24px;
+    margin-right: 8px;
+  }
+
+  &__tag-text {
+    font-size: 24px;
+    color: #FF6B35;
+  }
+
+  &__highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__highlight {
+    display: flex;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #F0F0F0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__highlight-month {
+    width: 60px;
+    font-size: 24px;
+    color: #FF6B35;
+    font-weight: 600;
+  }
+
+  &__highlight-trip {
+    flex: 1;
+    font-size: 28px;
+    color: #333333;
+  }
+
+  &__highlight-participants {
+    font-size: 20px;
+    color: #999999;
+  }
+
+  &__friends {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  &__friend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+  }
+
+  &__friend-rank {
+    font-size: 20px;
+    color: #FF6B35;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  &__friend-name {
+    font-size: 24px;
+    color: #333333;
+    margin-top: 8px;
+  }
+
+  &__friend-count {
+    font-size: 20px;
+    color: #999999;
+    margin-top: 4px;
+  }
+
+  &__fun-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__fun-stat {
+    display: flex;
+    align-items: center;
+    padding: 16px 0;
+  }
+
+  &__fun-stat-icon {
+    font-size: 32px;
+    margin-right: 24px;
+  }
+
+  &__fun-stat-text {
+    font-size: 28px;
+    color: #666666;
+  }
+}
