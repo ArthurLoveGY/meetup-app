@@ -1,0 +1,74 @@
+.blacklist {
+  min-height: 100vh;
+  background: #F5F5F5;
+
+  &__header {
+    background: #FF6B35;
+    background: #FF6B35;
+    padding: 32px 24px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__count {
+    font-size: 28px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  &__scroll {
+    height: calc(100vh - 120px);
+  }
+
+  &__list {
+    padding: 24px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+
+  &__info {
+    flex: 1;
+    margin-left: 24px;
+    min-width: 0;
+  }
+
+  &__name {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333333;
+    display: block;
+  }
+
+  &__time {
+    font-size: 20px;
+    color: #999999;
+    display: block;
+    margin-top: 4px;
+  }
+
+  &__unblock-btn {
+    padding: 8px 20px;
+    background: #F5F5F5;
+    border: 1px solid #EEEEEE;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+
+  &__unblock-text {
+    font-size: 24px;
+    color: #666666;
+  }
+}

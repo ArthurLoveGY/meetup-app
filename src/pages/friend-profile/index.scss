@@ -1,0 +1,139 @@
+.friend-profile {
+  min-height: 100vh;
+  background: #F5F5F5;
+
+  &__scroll {
+    height: 100vh;
+  }
+
+  &__header {
+    background: #FF6B35;
+    background: #FF6B35;
+    padding: 48px 24px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__name {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 24px;
+  }
+
+  &__bio {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  &__city {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 4px;
+  }
+
+  &__interests {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  &__interest {
+    padding: 4px 16px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+  }
+
+  &__interest-text {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  &__stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 32px;
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__stat-value {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__stat-label {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 4px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  &__action {
+    padding: 12px 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+
+    &--primary {
+      background: #fff;
+    }
+  }
+
+  &__action-text {
+    font-size: 28px;
+    font-weight: 600;
+    color: #fff;
+
+    .friend-profile__action--primary & {
+      color: #FF6B35;
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    background: #FFFFFF;
+    padding: 4px;
+    margin: 24px;
+    border-radius: 24px;
+  }
+
+  &__tab {
+    flex: 1;
+    text-align: center;
+    padding: 12px 0;
+    border-radius: 16px;
+
+    &--active {
+      background: #FF6B35;
+    }
+  }
+
+  &__tab-text {
+    font-size: 24px;
+    color: #666666;
+
+    .friend-profile__tab--active & {
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+
+  &__trips {
+    padding: 0 24px 32px;
+  }
+}

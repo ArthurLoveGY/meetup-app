@@ -1,0 +1,153 @@
+.add-friend {
+  min-height: 100vh;
+  background: #F5F5F5;
+
+  &__header {
+    background: #FF6B35;
+    background: #FF6B35;
+    padding: 32px 24px 24px;
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__search {
+    padding: 24px;
+    background: #FFFFFF;
+  }
+
+  &__search-input {
+    width: 100%;
+    height: 80px;
+    background: #F5F5F5;
+    border-radius: 999px;
+    padding: 0 24px;
+    font-size: 28px;
+    box-sizing: border-box;
+  }
+
+  &__scroll {
+    height: calc(100vh - 240px);
+  }
+
+  &__results {
+    padding: 24px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+
+  &__info {
+    flex: 1;
+    margin-left: 24px;
+    min-width: 0;
+  }
+
+  &__name {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333333;
+    display: block;
+  }
+
+  &__city {
+    font-size: 20px;
+    color: #999999;
+    display: block;
+    margin-top: 4px;
+  }
+
+  &__add-btn {
+    padding: 8px 24px;
+    background: #FF6B35;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+
+  &__add-btn-text {
+    font-size: 24px;
+    color: #fff;
+  }
+
+  &__mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__modal {
+    width: 80%;
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 32px;
+  }
+
+  &__modal-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333333;
+    text-align: center;
+    margin-bottom: 32px;
+    display: block;
+  }
+
+  &__modal-input {
+    width: 100%;
+    height: 88px;
+    background: #F5F5F5;
+    border-radius: 16px;
+    padding: 0 24px;
+    font-size: 28px;
+    margin-bottom: 32px;
+    box-sizing: border-box;
+  }
+
+  &__modal-actions {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__modal-btn {
+    flex: 1;
+    padding: 16px 0;
+    border-radius: 16px;
+    text-align: center;
+
+    &--cancel {
+      background: #F5F5F5;
+    }
+
+    &--send {
+      background: #FF6B35;
+    }
+  }
+
+  &__modal-btn-text {
+    font-size: 28px;
+
+    .add-friend__modal-btn--cancel & {
+      color: #666666;
+    }
+
+    .add-friend__modal-btn--send & {
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+}

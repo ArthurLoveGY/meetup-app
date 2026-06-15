@@ -1,0 +1,119 @@
+.frequent-friends {
+  min-height: 100vh;
+  background: #F5F5F5;
+
+  &__header {
+    background: #FF6B35;
+    background: #FF6B35;
+    padding: 32px 24px;
+  }
+
+  &__title {
+    font-size: 44px;
+    font-weight: 700;
+    color: #fff;
+    display: block;
+  }
+
+  &__subtitle {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    margin-top: 4px;
+  }
+
+  &__scroll {
+    height: calc(100vh - 140px);
+  }
+
+  &__list {
+    padding: 24px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+
+  &__rank {
+    width: 48px;
+    flex-shrink: 0;
+  }
+
+  &__rank-text {
+    font-size: 32px;
+    font-weight: 700;
+    color: #FF6B35;
+  }
+
+  &__info {
+    flex: 1;
+    margin-left: 24px;
+    min-width: 0;
+  }
+
+  &__name-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__name {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333333;
+  }
+
+  &__pin {
+    font-size: 20px;
+  }
+
+  &__pin-text {
+    font-size: 16px;
+  }
+
+  &__stats {
+    font-size: 24px;
+    color: #666666;
+    display: block;
+    margin-top: 4px;
+  }
+
+  &__last {
+    font-size: 20px;
+    color: #999999;
+    display: block;
+    margin-top: 2px;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-left: 16px;
+    flex-shrink: 0;
+  }
+
+  &__action {
+    padding: 6px 16px;
+    background: #F5F5F5;
+    border-radius: 999px;
+
+    &--primary {
+      background: #FF6B35;
+    }
+  }
+
+  &__action-text {
+    font-size: 20px;
+    color: #666666;
+
+    .frequent-friends__action--primary & {
+      color: #fff;
+    }
+  }
+}
