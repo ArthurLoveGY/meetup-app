@@ -9,8 +9,8 @@ import type { TripWithCreator } from '../../types'
 import './index.scss'
 
 const SORT_OPTIONS = [
-  { value: 'latest', label: '最新' },
   { value: 'hot', label: '最热' },
+  { value: 'latest', label: '最新' },
   { value: 'nearby', label: '附近' },
 ] as const
 
@@ -18,7 +18,7 @@ export default function Discover() {
   const { trips, isLoading, isLoadingMore, hasMore, fetchTrips } = useTripStore()
   const [keyword, setKeyword] = useState('')
   const [filterType, setFilterType] = useState('')
-  const [sortType, setSortType] = useState<string>('latest')
+  const [sortType, setSortType] = useState<string>('hot')
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | undefined>()
 
   const buildFilters = useCallback((kw: string, type: string, sort: string, location?: { lat: number; lng: number }) => {
@@ -96,7 +96,7 @@ export default function Discover() {
     <View className='discover'>
       <View className='discover__header'>
         <Text className='discover__title'>发现</Text>
-        <Text className='discover__subtitle'>探索更多有趣的活动</Text>
+        <Text className='discover__subtitle'>探索更多精彩活动</Text>
         <View className='discover__search'>
           <Input
             className='discover__search-input'
@@ -118,7 +118,7 @@ export default function Discover() {
         showScrollbar={false}
         onScrollToLower={handleLoadMore}
       >
-        {/* Sort tabs */}
+        {/* Sort tabs - 热门排第一 */}
         <View className='discover__sort'>
           {SORT_OPTIONS.map((s) => (
             <View
@@ -151,10 +151,10 @@ export default function Discover() {
             {filterType
               ? `${TRIP_TYPES.find((t) => t.value === filterType)?.label || ''}行程`
               : sortType === 'hot'
-                ? '热门行程'
+                ? '🔥 热门行程'
                 : sortType === 'nearby'
-                  ? '附近的行程'
-                  : '推荐行程'}
+                  ? '📍 附近的行程'
+                  : '🕐 最新行程'}
           </Text>
 
           {trips.length === 0 ? (

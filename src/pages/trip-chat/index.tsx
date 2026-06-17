@@ -1,10 +1,9 @@
 import { View, Text, ScrollView } from '@tarojs/components'
 import { useLoad, useRouter } from '@tarojs/taro'
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import { UserAvatar, EmptyState, LoadingView, MessageInput } from '../../components'
 import { useAuthStore } from '../../stores'
 import { chatService } from '../../services/chat.service'
-import { platformService } from '../../platform'
 import { formatRelativeTime } from '../../utils/date'
 import type { ChatMessage } from '../../services/chat.service'
 import './index.scss'
@@ -16,7 +15,10 @@ export default function TripChat() {
   const [isLoading, setIsLoading] = useState(true)
   const [inputValue, setInputValue] = useState('')
   const [tripId, setTripId] = useState('')
+  const [onlineCount, setOnlineCount] = useState(0)
+  const scrollRef = useRef<HTMLDivElement>(null)
 
+  // Load historical messages
   useLoad(() => {
     const id = router.params.id
     if (id) {
@@ -32,19 +34,60 @@ export default function TripChat() {
     }
   })
 
-  const handleSend = useCallback(async () => {
+  // WebSocket: join room and listen for events
+  useEffect(() => {
+    if (!tripId) return
+
+    chatService.joinTrip(tripId)
+
+    const handleMessage = (msg: ChatMessage) => {
+      setMessages((prev) => {
+        // Deduplicate: skip if message ID already exists
+        if (prev.some((m) => m.id === msg.id)) return prev
+        return [...prev, msg]
+      })
+    }
+
+    const handleUserJoined = (data: { userId: string; onlineCount: number }) => {
+      setOnlineCount(data.onlineCount)
+    }
+
+    const handleUserLeft = (data: { userId: string; onlineCount: number }) => {
+      setOnlineCount(data.onlineCount)
+    }
+
+    chatService.onMessage(handleMessage)
+    chatService.onUserJoined(handleUserJoined)
+    chatService.onUserLeft(handleUserLeft)
+
+    return () => {
+      chatService.offMessage(handleMessage)
+      chatService.offUserJoined(handleUserJoined)
+      chatService.offUserLeft(handleUserLeft)
+      chatService.leaveTrip(tripId)
+    }
+  }, [tripId])
+
+  // Auto-scroll to bottom on new messages
+  useEffect(() => {
+    if (messages.length > 0) {
+      setTimeout(() => {
+        const el = scrollRef.current
+        if (el) {
+          el.scrollTop = el.scrollHeight
+        }
+      }, 100)
+    }
+  }, [messages.length])
+
+  const handleSend = useCallback(() => {
     if (!inputValue.trim() || !tripId) return
 
     const content = inputValue.trim()
     setInputValue('')
 
-    try {
-      const newMessage = await chatService.sendMessage(tripId, content)
-      setMessages((prev) => [...prev, newMessage])
-    } catch {
-      platformService.showToast({ title: '发送失败', icon: 'error' })
-      setInputValue(content)
-    }
+    // Send via WebSocket (message will arrive back via 'new_message' event)
+    chatService.sendMessage(tripId, content)
   }, [inputValue, tripId])
 
   if (isLoading) {
@@ -55,10 +98,19 @@ export default function TripChat() {
     <View className='trip-chat'>
       <View className='trip-chat__header'>
         <Text className='trip-chat__title'>行程聊天</Text>
-        <Text className='trip-chat__count'>{messages.length}条消息</Text>
+        <View className='trip-chat__info'>
+          <Text className='trip-chat__count'>{messages.length}条消息</Text>
+          {onlineCount > 0 && (
+            <Text className='trip-chat__online'>{onlineCount}人在线</Text>
+          )}
+        </View>
       </View>
 
-      <ScrollView className='trip-chat__scroll' scrollY scrollIntoView={`msg-${messages[messages.length - 1]?.id}`}>
+      <ScrollView
+        className='trip-chat__scroll'
+        scrollY
+        scrollIntoView={`msg-${messages[messages.length - 1]?.id}`}
+      >
         {messages.length === 0 ? (
           <EmptyState
             icon='💬'

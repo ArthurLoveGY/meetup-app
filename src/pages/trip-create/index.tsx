@@ -167,7 +167,11 @@ export default function TripCreate() {
       clearDraft()
       platformService.showToast({ title: '发布成功！', icon: 'success' })
       setTimeout(() => {
-        platformService.redirectTo(`/pages/trip-detail/index?id=${trip.id}`)
+        try {
+          platformService.navigateTo(`/pages/trip-detail/index?id=${trip.id}`)
+        } catch {
+          // 跳转失败不影响发布结果
+        }
       }, 1500)
     } catch (error) {
       platformService.showToast({ title: '发布失败，请重试', icon: 'error' })

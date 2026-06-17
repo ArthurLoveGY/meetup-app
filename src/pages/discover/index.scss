@@ -121,6 +121,8 @@
     aspect-ratio: 1;
     background: #F8F8F8;
     border-radius: 16px;
+    border: 2px solid transparent;
+    box-sizing: border-box;
     transition: all 0.2s;
 
     &--active {

@@ -1,31 +1,32 @@
 import { View, Text, ScrollView } from '@tarojs/components'
+import { useLoad } from '@tarojs/taro'
 import { useState } from 'react'
-import { EmptyState } from '../../components'
+import { EmptyState, LoadingView } from '../../components'
+import { announcementService } from '../../services/announcement.service'
+import { platformService } from '../../platform'
 import { formatRelativeTime } from '../../utils/date'
+import type { Announcement } from '../../services/announcement.service'
 import './index.scss'
 
-interface Announcement {
-  id: string
-  title: string
-  content: string
-  createdAt: string
-}
-
 export default function Announcements() {
-  const [announcements] = useState<Announcement[]>([
-    {
-      id: 'ann_1',
-      title: 'TripCircle v0.2 发布',
-      content: '新增好友系统、参与者管理、分享邀请等功能。感谢大家的反馈！',
-      createdAt: '2026-06-08T10:00:00Z',
-    },
-    {
-      id: 'ann_2',
-      title: '端午节活动推荐',
-      content: '端午节快到了，快约上好友一起去露营、徒步或聚餐吧！',
-      createdAt: '2026-06-05T10:00:00Z',
-    },
-  ])
+  const [announcements, setAnnouncements] = useState<Announcement[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  useLoad(() => {
+    announcementService.getAnnouncements(1, 50)
+      .then((data) => {
+        setAnnouncements(data.list || [])
+        setIsLoading(false)
+      })
+      .catch(() => {
+        platformService.showToast({ title: '加载失败', icon: 'error' })
+        setIsLoading(false)
+      })
+  })
+
+  if (isLoading) {
+    return <LoadingView text='加载公告...' />
+  }
 
   return (
     <View className='announcements'>
@@ -44,9 +45,14 @@ export default function Announcements() {
           <View className='announcements__list'>
             {announcements.map((ann) => (
               <View key={ann.id} className='announcements__item'>
-                <Text className='announcements__item-title'>{ann.title}</Text>
+                <View className='announcements__item-header'>
+                  <Text className='announcements__item-title'>{ann.title}</Text>
+                  {ann.type === 'update' && <Text className='announcements__item-badge'>更新</Text>}
+                  {ann.type === 'event' && <Text className='announcements__item-badge'>活动</Text>}
+                  {ann.type === 'maintenance' && <Text className='announcements__item-badge'>维护</Text>}
+                </View>
                 <Text className='announcements__item-content'>{ann.content}</Text>
-                <Text className='announcements__item-time'>{formatRelativeTime(ann.createdAt)}</Text>
+                <Text className='announcements__item-time'>{formatRelativeTime(ann.publishedAt || ann.createdAt)}</Text>
               </View>
             ))}
           </View>
