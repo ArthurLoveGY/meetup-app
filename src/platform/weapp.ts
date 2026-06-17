@@ -79,7 +79,19 @@ export class WeappPlatform implements PlatformAdapter {
   }
 
   navigateTo(url: string): void {
-    Taro.navigateTo({ url })
+    const path = url.split('?')[0]
+    const tabbarPages = [
+      '/pages/index/index',
+      '/pages/discover/index',
+      '/pages/trip-create/index',
+      '/pages/messages/index',
+      '/pages/profile/index',
+    ]
+    if (tabbarPages.some((p) => path === p || path.startsWith(p + '/'))) {
+      Taro.switchTab({ url: path })
+    } else {
+      Taro.navigateTo({ url })
+    }
   }
 
   navigateBack(): void {
