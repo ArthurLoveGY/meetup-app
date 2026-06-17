@@ -11,7 +11,7 @@ interface AuthState {
   isLoggedIn: boolean
   isLoading: boolean
 
-  login: (phone?: string) => Promise<void>
+  login: (phone?: string, smsCode?: string) => Promise<void>
   logout: () => Promise<void>
   checkAuth: () => Promise<void>
   updateProfile: (updates: Partial<User>) => Promise<void>
@@ -23,15 +23,18 @@ export const useAuthStore = create<AuthState>((set) => ({
   isLoggedIn: !!Taro.getStorageSync('token'),
   isLoading: false,
 
-  login: async (phone?: string) => {
+  login: async (phone?: string, smsCode?: string) => {
     set({ isLoading: true })
     try {
-      const { code } = await platformService.login()
-      
       let response: { token: string; user: User }
-      if (phone) {
-        response = await authService.loginWithPhone(phone, code)
+      if (phone && smsCode) {
+        response = await authService.loginWithPhone(phone, smsCode)
+      } else if (phone) {
+        // Phone without code: trigger SMS flow first
+        await authService.sendSmsCode(phone)
+        throw new Error('请先获取验证码')
       } else {
+        const { code } = await platformService.login()
         response = await authService.loginWithWechat(code)
       }
 

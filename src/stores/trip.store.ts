@@ -3,6 +3,7 @@ import { tripService } from '../services'
 import type { TripWithCreator, TripDetail, CreateTripDTO, ParticipantStatus, TripTimelineItem, TripChecklistItem } from '../types'
 
 interface TripState {
+  feedTrips: TripWithCreator[]
   trips: TripWithCreator[]
   myTrips: TripWithCreator[]
   currentTrip: TripDetail | null
@@ -10,8 +11,11 @@ interface TripState {
   isLoadingMore: boolean
   hasMore: boolean
   page: number
+  feedPage: number
+  feedHasMore: boolean
   error: string | null
 
+  fetchFeedTrips: (refresh?: boolean) => Promise<void>
   fetchTrips: (refresh?: boolean, filters?: { keyword?: string; type?: string; sort?: string; lat?: number; lng?: number }) => Promise<void>
   fetchMyTrips: (refresh?: boolean) => Promise<void>
   fetchTripDetail: (tripId: string) => Promise<void>
@@ -28,6 +32,7 @@ interface TripState {
 }
 
 export const useTripStore = create<TripState>((set, get) => ({
+  feedTrips: [],
   trips: [],
   myTrips: [],
   currentTrip: null,
@@ -35,7 +40,35 @@ export const useTripStore = create<TripState>((set, get) => ({
   isLoadingMore: false,
   hasMore: true,
   page: 1,
+  feedPage: 1,
+  feedHasMore: true,
   error: null,
+
+  fetchFeedTrips: async (refresh = false) => {
+    const { feedPage } = get()
+    if (refresh) {
+      set({ isLoading: true, feedPage: 1 })
+    } else {
+      set({ isLoadingMore: true })
+    }
+
+    try {
+      const response = await tripService.getFeed(refresh ? 1 : feedPage, 10)
+      set({
+        feedTrips: refresh ? response.list : [...get().feedTrips, ...response.list],
+        isLoading: false,
+        isLoadingMore: false,
+        feedHasMore: response.list.length === 10,
+        feedPage: (refresh ? 1 : feedPage) + 1,
+      })
+    } catch {
+      set({
+        isLoading: false,
+        isLoadingMore: false,
+        error: '获取动态失败',
+      })
+    }
+  },
 
   fetchTrips: async (refresh = false, filters) => {
     const { page } = get()
