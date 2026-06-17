@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { Repository } from 'typeorm'
+import { Repository, In } from 'typeorm'
 import { Trip } from './trip.entity'
 import { TripParticipant } from './trip-participant.entity'
 import { TripTimeline } from './trip-timeline.entity'
@@ -58,6 +58,26 @@ export class TripService {
     qb.skip((page - 1) * limit).take(limit)
 
     const [list, total] = await qb.getManyAndCount()
+    return { list, total }
+  }
+
+  async getFeed(userId: string, friendIds: string[], page = 1, limit = 10): Promise<{ list: Trip[]; total: number }> {
+    // Include user's own trips + friends' trips
+    const creatorIds = [userId, ...friendIds]
+    if (creatorIds.length === 0) {
+      return { list: [], total: 0 }
+    }
+
+    const [list, total] = await this.tripRepo.findAndCount({
+      where: {
+        creatorId: In(creatorIds),
+        status: 'published',
+      },
+      relations: ['creator', 'participants', 'participants.user'],
+      order: { createdAt: 'DESC' },
+      skip: (page - 1) * limit,
+      take: limit,
+    })
     return { list, total }
   }
 

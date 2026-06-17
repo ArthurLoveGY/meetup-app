@@ -17,6 +17,14 @@ export class FriendService {
     })
   }
 
+  async getFriendIds(userId: string): Promise<string[]> {
+    const relations = await this.friendRepo.find({
+      where: { userId, status: 'accepted' },
+      select: ['friendId'],
+    })
+    return relations.map((r) => r.friendId)
+  }
+
   async getBlockedUsers(userId: string): Promise<FriendRelation[]> {
     return this.friendRepo.find({
       where: { userId, status: 'blocked' },

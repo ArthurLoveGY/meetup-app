@@ -1,10 +1,14 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, Query, UseGuards, Request } from '@nestjs/common'
 import { AuthGuard } from '@nestjs/passport'
 import { TripService } from './trip.service'
+import { FriendService } from '../friend/friend.service'
 
 @Controller('trips')
 export class TripController {
-  constructor(private tripService: TripService) {}
+  constructor(
+    private tripService: TripService,
+    private friendService: FriendService,
+  ) {}
 
   @Get()
   findAll(
@@ -22,6 +26,13 @@ export class TripController {
       lat: lat ? +lat : undefined,
       lng: lng ? +lng : undefined,
     })
+  }
+
+  @Get('feed')
+  @UseGuards(AuthGuard('jwt'))
+  async getFeed(@Request() req, @Query('page') page = 1, @Query('limit') limit = 10) {
+    const friendIds = await this.friendService.getFriendIds(req.user.id)
+    return this.tripService.getFeed(req.user.id, friendIds, +page, +limit)
   }
 
   @Get('mine')

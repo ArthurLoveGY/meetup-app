@@ -1,5 +1,6 @@
 import { NestFactory } from '@nestjs/core'
 import { ValidationPipe } from '@nestjs/common'
+import { IoAdapter } from '@nestjs/platform-socket.io'
 import { AppModule } from './app.module'
 import { ResponseInterceptor } from './common/response.interceptor'
 import { HttpExceptionFilter } from './common/http-exception.filter'
@@ -12,6 +13,8 @@ async function bootstrap() {
     credentials: true,
   })
   
+  app.useWebSocketAdapter(new IoAdapter(app))
+
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true,
     transform: true,

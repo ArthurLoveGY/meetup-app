@@ -11,6 +11,9 @@ import { NotificationModule } from './notification/notification.module'
 import { VoteModule } from './vote/vote.module'
 import { BudgetModule } from './budget/budget.module'
 import { UploadModule } from './upload/upload.module'
+import { ChatModule } from './chat/chat.module'
+import { StatsModule } from './stats/stats.module'
+import { AnnouncementModule } from './announcement/announcement.module'
 
 @Module({
   imports: [
@@ -37,6 +40,9 @@ import { UploadModule } from './upload/upload.module'
     VoteModule,
     BudgetModule,
     UploadModule,
+    ChatModule,
+    StatsModule,
+    AnnouncementModule,
   ],
 })
 export class AppModule {}
