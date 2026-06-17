@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro'
 import { getToken } from './request'
 
-const BASE_URL = process.env.API_BASE_URL || 'http://localhost:3000/api'
+const BASE_URL = 'http://localhost:3000/api'
 
 export const uploadService = {
   async uploadImage(filePath: string): Promise<string> {

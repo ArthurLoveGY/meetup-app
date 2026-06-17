@@ -2,6 +2,10 @@ import { api } from './request'
 import type { Trip, TripWithCreator, TripDetail, CreateTripDTO, ParticipantStatus, TripTimelineItem, TripChecklistItem } from '../types'
 
 export const tripService = {
+  async getFeed(page = 1, pageSize = 10): Promise<{ list: TripWithCreator[]; total: number }> {
+    return api.get('/trips/feed', { page, pageSize })
+  },
+
   async getTrips(page = 1, pageSize = 10, filters?: {
     keyword?: string; type?: string; sort?: string; lat?: number; lng?: number;
   }): Promise<{ list: TripWithCreator[]; total: number }> {

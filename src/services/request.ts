@@ -1,7 +1,9 @@
 import Taro from '@tarojs/taro'
 import { platformService } from '../platform'
 
-const BASE_URL = process.env.API_BASE_URL || 'http://localhost:3000/api'
+// 小程序环境没有 process.env，使用 Taro defineConstants 或硬编码
+// 开发时改为你的后端地址
+const BASE_URL = 'http://127.0.0.1:3000/api'
 
 interface RequestOptions {
   url: string
@@ -59,10 +61,6 @@ async function request<T = unknown>(options: RequestOptions): Promise<T> {
       header,
     })
 
-    if (showLoading) {
-      platformService.hideLoading()
-    }
-
     const statusCode = response.statusCode
     const result = response.data as ApiResponse<T>
 
@@ -85,10 +83,15 @@ async function request<T = unknown>(options: RequestOptions): Promise<T> {
 
     return result.data
   } catch (error) {
-    if (showLoading) {
-      platformService.hideLoading()
+    // 如果请求失败时还没有显示过错误 toast，补充提示
+    if (error instanceof Error && !['Unauthorized'].includes(error.message) && !error.message.includes('HTTP Error') && !error.message.includes('API Error')) {
+      platformService.showToast({ title: '网络请求失败，请重试', icon: 'error' })
     }
     throw error
+  } finally {
+    if (showLoading) {
+      try { platformService.hideLoading() } catch { /* ignore */ }
+    }
   }
 }
 
