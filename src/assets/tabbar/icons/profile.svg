@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- 我的 - 人物 -->
+  <circle cx="24" cy="15" r="9" stroke="#999" stroke-width="3"/>
+  <path d="M4 44 C4 32 13 24 24 24 C35 24 44 32 44 44" stroke="#999" stroke-width="3" stroke-linecap="round"/>
+</svg>

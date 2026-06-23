@@ -9,7 +9,6 @@ import type { TripWithCreator } from '../../types'
 import './index.scss'
 
 const SORT_OPTIONS = [
-  { value: 'hot', label: '最热' },
   { value: 'latest', label: '最新' },
   { value: 'nearby', label: '附近' },
 ] as const
@@ -18,8 +17,9 @@ export default function Discover() {
   const { trips, isLoading, isLoadingMore, hasMore, fetchTrips } = useTripStore()
   const [keyword, setKeyword] = useState('')
   const [filterType, setFilterType] = useState('')
-  const [sortType, setSortType] = useState<string>('hot')
+  const [sortType, setSortType] = useState<string>('latest')
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | undefined>()
+  const [isLocating, setIsLocating] = useState(false)
 
   const buildFilters = useCallback((kw: string, type: string, sort: string, location?: { lat: number; lng: number }) => {
     const filters: { keyword?: string; type?: string; sort?: string; lat?: number; lng?: number } = {}
@@ -57,20 +57,28 @@ export default function Discover() {
   }, [filterType, keyword, sortType, userLocation, fetchTrips, buildFilters])
 
   const handleSortChange = useCallback(async (sort: string) => {
-    setSortType(sort)
     if (sort === 'nearby' && !userLocation) {
+      setIsLocating(true)
       try {
         const coords = await platformService.getLocation()
         const loc = { lat: coords.latitude, lng: coords.longitude }
         setUserLocation(loc)
+        setSortType(sort)
         fetchTrips(true, buildFilters(keyword, filterType, sort, loc))
-      } catch {
-        platformService.showToast({ title: '获取位置失败', icon: 'error' })
-        setSortType('latest')
-        fetchTrips(true, buildFilters(keyword, filterType, 'latest'))
+      } catch (err) {
+        const errMsg = err instanceof Error ? err.message : '获取位置失败'
+        platformService.showModal({
+          title: '定位失败',
+          content: `${errMsg}，请检查定位权限或网络连接后重试。`,
+          showCancel: false,
+        })
+        // Stay on current sort on failure
+      } finally {
+        setIsLocating(false)
       }
     } else {
-      fetchTrips(true, buildFilters(keyword, filterType, sort))
+      setSortType(sort)
+      fetchTrips(true, buildFilters(keyword, filterType, sort, sort === 'nearby' ? userLocation : undefined))
     }
   }, [keyword, filterType, userLocation, fetchTrips, buildFilters])
 
@@ -118,7 +126,7 @@ export default function Discover() {
         showScrollbar={false}
         onScrollToLower={handleLoadMore}
       >
-        {/* Sort tabs - 热门排第一 */}
+        {/* Sort tabs */}
         <View className='discover__sort'>
           {SORT_OPTIONS.map((s) => (
             <View
@@ -126,7 +134,10 @@ export default function Discover() {
               className={`discover__sort-tab ${sortType === s.value ? 'discover__sort-tab--active' : ''}`}
               onClick={() => handleSortChange(s.value)}
             >
-              <Text className='discover__sort-text'>{s.label}</Text>
+              <Text className='discover__sort-text'>
+                {s.label}
+                {s.value === 'nearby' && isLocating ? '...' : ''}
+              </Text>
             </View>
           ))}
         </View>
@@ -150,11 +161,9 @@ export default function Discover() {
           <Text className='discover__section-title'>
             {filterType
               ? `${TRIP_TYPES.find((t) => t.value === filterType)?.label || ''}行程`
-              : sortType === 'hot'
-                ? '🔥 热门行程'
-                : sortType === 'nearby'
-                  ? '📍 附近的行程'
-                  : '🕐 最新行程'}
+              : sortType === 'nearby'
+                ? '📍 附近的行程'
+                : '🕐 最新行程'}
           </Text>
 
           {trips.length === 0 ? (

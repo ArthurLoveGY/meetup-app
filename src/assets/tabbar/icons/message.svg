@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- 消息 - 聊天气泡 -->
+  <path d="M6 10 H42 A5 5 0 0 1 47 15 V30 A5 5 0 0 1 42 35 H28 L18 43 V35 H6 A5 5 0 0 1 1 30 V15 A5 5 0 0 1 6 10 Z" stroke="#999" stroke-width="2.8" stroke-linejoin="round"/>
+  <circle cx="15" cy="22.5" r="3" fill="#999"/>
+  <circle cx="24" cy="22.5" r="3" fill="#999"/>
+  <circle cx="33" cy="22.5" r="3" fill="#999"/>
+</svg>
