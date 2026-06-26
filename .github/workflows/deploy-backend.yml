@@ -1,0 +1,38 @@
+name: deploy-backend
+
+# push 到 main 且 backend/ 或部署相关文件有变更时，SSH 登录服务器执行 pull+build+pm2 restart。
+# 也支持在 Actions 页面手动触发 (workflow_dispatch)。
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - 'scripts/deploy-backend.sh'
+      - '.github/workflows/deploy-backend.yml'
+  workflow_dispatch:
+
+# 同一时刻只允许一个部署任务，避免并发构建/重启互相覆盖
+concurrency:
+  group: deploy-backend
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: SSH deploy
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          # 仓库根目录通过 secret 注入，默认值在脚本内为 /opt/meetup-app
+          envs: DEPLOY_REPO_ROOT
+          env:
+            DEPLOY_REPO_ROOT: ${{ secrets.DEPLOY_REPO_ROOT }}
+          script: |
+            cd "${DEPLOY_REPO_ROOT:-/opt/meetup-app}" \
+              && bash scripts/deploy-backend.sh

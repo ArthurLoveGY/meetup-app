@@ -465,3 +465,94 @@ curl http://<服务器IP>/api/auth/me \
 | 8 | 后端 CORS `origin` 已包含前端地址 | ☐ |
 | 9 | `curl` 测试 API 返回正常 | ☐ |
 | 10 | 前端 `npm run dev:h5` 能正常联调 | ☐ |
+
+---
+
+## 8. 自动部署（GitHub Actions + SSH）
+
+> push 到 `main` 分支后，GitHub Actions 通过 SSH 登录服务器，自动执行 `git pull → npm ci → nest build → pm2 restart`，无需手动登录服务器。
+
+### 8.1 工作机制
+
+- 触发条件：push 到 `main` 且 `backend/`、`scripts/deploy-backend.sh`、`.github/workflows/deploy-backend.yml` 任一变更；也支持在 GitHub 仓库 **Actions** 页面手动触发（`workflow_dispatch`）。
+- 执行文件：`scripts/deploy-backend.sh`（服务器端运行，幂等，可手动执行）。
+- 并发控制：同一时刻只允许一个部署任务，避免并发构建互相覆盖。
+- 纯前端提交不会触发后端部署（靠 `paths` 过滤）。
+
+### 8.2 在 GitHub 仓库配置 Secrets
+
+进入仓库 **Settings → Secrets and variables → Actions → New repository secret**，添加：
+
+| Secret 名 | 说明 | 示例 |
+|-----------|------|------|
+| `SSH_HOST` | 服务器公网 IP | `106.53.52.88` |
+| `SSH_USER` | SSH 登录用户 | `root` 或独立 deploy 用户 |
+| `SSH_KEY` | SSH 私钥（OpenSSH 格式，含 `-----BEGIN ... PRIVATE KEY-----`） | （见 8.3 生成） |
+| `SSH_PORT` | SSH 端口，默认 22 | `22` |
+| `DEPLOY_REPO_ROOT` | 服务器上仓库根目录（可选，默认 `/opt/meetup-app`） | `/opt/meetup-app` |
+
+> 仓库为 public，服务器 `git fetch` 无需额外凭证；若后续转为 private，需在服务器配置 deploy key 或 PAT。
+
+### 8.3 生成部署专用 SSH 密钥
+
+在本机生成一对专用密钥（不要复用个人密钥）：
+
+```bash
+ssh-keygen -t ed25519 -C "github-actions-deploy" -f ~/.ssh/github_actions_deploy -N ""
+```
+
+- 把**公钥** `~/.ssh/github_actions_deploy.pub` 追加到服务器对应用户的 `~/.ssh/authorized_keys`：
+  ```bash
+  ssh-copy-id -i ~/.ssh/github_actions_deploy.pub root@106.53.52.88
+  ```
+- 把**私钥** `~/.ssh/github_actions_deploy` 的完整内容粘贴到 GitHub Secret `SSH_KEY`。
+
+建议对 deploy 公钥在 `authorized_keys` 中限制可执行的命令，降低风险，例如：
+```
+from="GitHub Actions 的网段",command="bash scripts/deploy-backend.sh",no-port-forwarding,no-X11-forwarding,no-pty ssh-ed25519 AAAA...
+```
+（实际网段需参考 [GitHub Actions IP ranges](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-githubs-ip-addresses)；若不便维护可省略 `from=`，但务必保留 `command=` 与 `no-pty`。）
+
+### 8.4 服务器侧一次性准备
+
+确保服务器上：
+
+1. 已 `git clone` 仓库到 `$DEPLOY_REPO_ROOT`（默认 `/opt/meetup-app`），并切到 `main`：
+   ```bash
+   git clone https://github.com/ArthurLoveGY/meetup-app.git /opt/meetup-app
+   cd /opt/meetup-app && git checkout main
+   ```
+2. 后端 `.env` 已在 `/opt/meetup-app/backend/.env` 配置好（`JWT_SECRET`、数据库连接等）。`.env` 在 `.gitignore` 中，部署脚本不会动它。
+3. 已全局安装 `pm2`：`npm install -g pm2`，并执行过 `pm2 startup` + `pm2 install pm2-logrotate`（可选）。
+4. 首次部署若 pm2 进程不存在，脚本会自动 `pm2 start dist/main.js --name tripcircle-backend`；之后用 `pm2 restart`。
+
+### 8.5 验证
+
+1. 推送一次 backend 改动到 `main`，或在 Actions 页面点 **Run workflow**。
+2. 在仓库 **Actions** 标签页查看 `deploy-backend` 运行状态，全绿即成功。
+3. 服务器上检查：
+   ```bash
+   pm2 status                 # tripcircle-backend 状态应为 online
+   pm2 logs tripcircle-backend --lines 50
+   curl https://api.arthurzhang.top/api/health  # 或任意已有路由
+   ```
+
+### 8.6 手动部署 / 排错
+
+脚本本身可在服务器上直接跑，与 CI 完全一致：
+
+```bash
+cd /opt/meetup-app
+bash scripts/deploy-backend.sh
+# 或指定变量
+DEPLOY_REPO_ROOT=/opt/meetup-app PM2_NAME=tripcircle-backend bash scripts/deploy-backend.sh
+```
+
+常见问题：
+
+- **SSH 连接失败**：确认 `SSH_HOST/USER/PORT/KEY` 正确，私钥格式为 OpenSSH，服务器 `authorized_keys` 已加公钥。
+- **`pm2: command not found`**：脚本会尝试 source nvm；若服务器用其他方式装 node，确保 `pm2` 在非交互 SSH 的 `PATH` 中（脚本已加 `/usr/local/bin`）。
+- **`npm ci` 失败**：通常是 `package-lock.json` 与依赖不一致，本地跑 `npm install` 重新生成 lock 并提交。
+- **构建成功但接口 500**：看 `pm2 logs`；多为 `.env` 缺字段或数据库连接问题。
+- **部署把 .env 删了？** 不会。脚本只 `git reset --hard`（不碰未跟踪文件），从不 `git clean`。
+
