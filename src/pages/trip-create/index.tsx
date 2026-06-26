@@ -1,4 +1,5 @@
 import { View, Text, Input, Textarea, ScrollView, Image } from '@tarojs/components'
+import { DateTimePicker } from '../../components/DateTimePicker'
 import Taro, { useLoad, useRouter } from '@tarojs/taro'
 import { useState, useCallback, useEffect } from 'react'
 import { useTripStore } from '../../stores'
@@ -227,23 +228,20 @@ export default function TripCreate() {
 
         <View className='trip-create__section'>
           <Text className='trip-create__label'>开始时间 *</Text>
-          <Input
-            className='trip-create__input'
-            type='text'
-            placeholder='YYYY-MM-DD HH:mm'
+          <DateTimePicker
             value={startTime}
-            onInput={(e) => setStartTime(e.detail.value)}
+            onChange={setStartTime}
+            placeholder='请选择开始时间'
+            required
           />
         </View>
 
         <View className='trip-create__section'>
           <Text className='trip-create__label'>结束时间</Text>
-          <Input
-            className='trip-create__input'
-            type='text'
-            placeholder='YYYY-MM-DD HH:mm'
+          <DateTimePicker
             value={endTime}
-            onInput={(e) => setEndTime(e.detail.value)}
+            onChange={setEndTime}
+            placeholder='请选择结束时间'
           />
         </View>
 

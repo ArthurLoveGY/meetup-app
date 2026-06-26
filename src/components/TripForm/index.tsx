@@ -1,4 +1,5 @@
 import { View, Text, Input, Textarea, ScrollView, Image } from '@tarojs/components'
+import { DateTimePicker } from '../DateTimePicker'
 import { useCallback } from 'react'
 import { platformService } from '../../platform'
 import { uploadService } from '../../services/upload.service'
@@ -117,23 +118,20 @@ export function TripForm({ value, onChange }: TripFormProps) {
 
       <View className='trip-form__section'>
         <Text className='trip-form__label'>开始时间 *</Text>
-        <Input
-          className='trip-form__input'
-          type='text'
-          placeholder='YYYY-MM-DD HH:mm'
+        <DateTimePicker
           value={value.startTime}
-          onInput={(e) => update('startTime', e.detail.value)}
+          onChange={(val) => update('startTime', val)}
+          placeholder='请选择开始时间'
+          required
         />
       </View>
 
       <View className='trip-form__section'>
         <Text className='trip-form__label'>结束时间</Text>
-        <Input
-          className='trip-form__input'
-          type='text'
-          placeholder='YYYY-MM-DD HH:mm'
+        <DateTimePicker
           value={value.endTime}
-          onInput={(e) => update('endTime', e.detail.value)}
+          onChange={(val) => update('endTime', val)}
+          placeholder='请选择结束时间'
         />
       </View>
 
