@@ -1,14 +1,22 @@
+import Taro from '@tarojs/taro'
 import { io, Socket } from 'socket.io-client'
-import { getToken } from './request'
-
-// 小程序环境没有 process.env，与 request.ts 保持一致
-const SOCKET_URL = 'http://localhost:3000'
+import { getToken, clearToken } from './request'
+import { SOCKET_BASE_URL } from './config'
 
 let socket: Socket | null = null
 
+// 鉴权类连接错误 → 清 token 并跳登录页，避免无效 token 反复重连
+function isAuthError(err: unknown): boolean {
+  const e = err as { message?: string; data?: unknown }
+  const text = `${e.message ?? ''} ${
+    typeof e.data === 'string' ? e.data : JSON.stringify(e.data ?? '')
+  }`
+  return /token|auth|unauthorized|401/i.test(text)
+}
+
 export function getSocket(): Socket {
   if (!socket) {
-    socket = io(`${SOCKET_URL}/chat`, {
+    socket = io(`${SOCKET_BASE_URL}/chat`, {
       auth: {
         token: getToken(),
       },
@@ -17,6 +25,18 @@ export function getSocket(): Socket {
       reconnectionAttempts: 10,
       reconnectionDelay: 1000,
     })
+    socket.on('connect_error', (err) => {
+      if (isAuthError(err)) {
+        clearToken()
+        try {
+          Taro.reLaunch({ url: '/pages/login/index' })
+        } catch {
+          /* ignore */
+        }
+      } else {
+        console.warn('socket connect_error', err)
+      }
+    })
   }
   return socket
 }
@@ -24,10 +44,19 @@ export function getSocket(): Socket {
 export function connectSocket(): Socket {
   const s = getSocket()
   if (!s.connected) {
-    // Update token before connecting
+    // 连接/重连前刷新 token，避免使用过期凭证
     s.auth = { token: getToken() }
     s.connect()
   }
+  return s
+}
+
+/** 登录/恢复后用最新 token 重新建立 socket 连接。 */
+export function reconnectSocket(): Socket {
+  const s = getSocket()
+  s.disconnect()
+  s.auth = { token: getToken() }
+  s.connect()
   return s
 }
 

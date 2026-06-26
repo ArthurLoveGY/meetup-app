@@ -1,6 +1,7 @@
 import { View, Text, Input } from '@tarojs/components'
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import { useAuthStore } from '../../stores'
+import { authService } from '../../services'
 import { platformService } from '../../platform'
 import { validatePhone } from '../../utils/validator'
 import './index.scss'
@@ -11,25 +12,45 @@ export default function PhoneAuth() {
   const [smsCode, setSmsCode] = useState('')
   const [countdown, setCountdown] = useState(0)
   const [step, setStep] = useState<'phone' | 'code'>('phone')
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
-  const handleSendCode = useCallback(() => {
+  // 卸载时清理倒计时，避免内存泄漏与对已卸载组件 setState
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current)
+        timerRef.current = null
+      }
+    }
+  }, [])
+
+  const handleSendCode = useCallback(async () => {
     const validation = validatePhone(phone)
     if (!validation.valid) {
       platformService.showToast({ title: validation.message!, icon: 'error' })
       return
     }
-    setCountdown(60)
-    setStep('code')
-    const timer = setInterval(() => {
-      setCountdown((prev) => {
-        if (prev <= 1) {
-          clearInterval(timer)
-          return 0
-        }
-        return prev - 1
-      })
-    }, 1000)
-    platformService.showToast({ title: '验证码已发送', icon: 'success' })
+    try {
+      await authService.sendSmsCode(phone)
+      setStep('code')
+      setCountdown(60)
+      if (timerRef.current) clearInterval(timerRef.current)
+      timerRef.current = setInterval(() => {
+        setCountdown((prev) => {
+          if (prev <= 1) {
+            if (timerRef.current) {
+              clearInterval(timerRef.current)
+              timerRef.current = null
+            }
+            return 0
+          }
+          return prev - 1
+        })
+      }, 1000)
+      platformService.showToast({ title: '验证码已发送', icon: 'success' })
+    } catch {
+      platformService.showToast({ title: '发送验证码失败', icon: 'error' })
+    }
   }, [phone])
 
   const handleVerify = useCallback(async () => {
@@ -38,7 +59,7 @@ export default function PhoneAuth() {
       return
     }
     try {
-      await login(phone)
+      await login(phone, smsCode)
       platformService.showToast({ title: '验证成功', icon: 'success' })
       setTimeout(() => {
         platformService.redirectTo('/pages/complete-profile/index')

@@ -1,5 +1,6 @@
 import Taro from '@tarojs/taro'
 import { api, clearToken } from './request'
+import { API_BASE_URL } from './config'
 import type { User } from '../types'
 
 interface LoginResponse {
@@ -21,6 +22,8 @@ export const authService = {
   },
 
   async refreshToken(): Promise<{ user: User }> {
+    // 注意：后端 /auth/refresh 为 jwt 守卫，仅返回 { user }，不发新 token。
+    // 过期 token 调用会 401。故不能用于静默续期；前端用 getCurrentUser(/auth/me) 做有效性校验。
     return api.post<{ user: User }>('/auth/refresh')
   },
 
@@ -47,7 +50,7 @@ export const authService = {
   async uploadAvatar(filePath: string): Promise<{ url: string }> {
     const token = Taro.getStorageSync('token')
     const res = await Taro.uploadFile({
-      url: 'https://api.tripcircle.com/auth/avatar',
+      url: `${API_BASE_URL}/auth/avatar`,
       filePath,
       name: 'avatar',
       header: {
