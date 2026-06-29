@@ -52,11 +52,13 @@ export const uploadService = {
                 reject(new Error(data.message || '上传失败'))
                 return
               }
-              const url = data.data?.url || data.url
-              if (!url) {
+              const rawUrl = data.data?.url || data.url
+              if (!rawUrl) {
                 reject(new Error('上传响应缺少 url'))
                 return
               }
+              // 后端返回的可能是相对路径（如 /uploads/xxx），需要拼接完整 URL
+              const url = rawUrl.startsWith('http') ? rawUrl : `${API_BASE_URL.replace('/api', '')}${rawUrl}`
               resolve(url)
             } catch {
               reject(new Error('解析上传响应失败'))

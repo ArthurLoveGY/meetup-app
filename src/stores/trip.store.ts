@@ -1,6 +1,18 @@
 import { create } from 'zustand'
 import { tripService } from '../services'
+import { resolveImageUrl } from '../services/config'
 import type { TripWithCreator, TripDetail, CreateTripDTO, ParticipantStatus, TripTimelineItem, TripChecklistItem } from '../types'
+
+/** 统一将行程数据中的相对路径图片 URL 转换为绝对路径 */
+function normalizeTrip<T extends { coverUrl?: string; creator?: { avatarUrl?: string } }>(trip: T): T {
+  return {
+    ...trip,
+    coverUrl: resolveImageUrl(trip.coverUrl),
+    creator: trip.creator
+      ? { ...trip.creator, avatarUrl: resolveImageUrl(trip.creator.avatarUrl) }
+      : trip.creator,
+  }
+}
 
 interface TripState {
   feedTrips: TripWithCreator[]
@@ -54,8 +66,9 @@ export const useTripStore = create<TripState>((set, get) => ({
 
     try {
       const response = await tripService.getFeed(refresh ? 1 : feedPage, 10)
+      const list = response.list.map(normalizeTrip)
       set({
-        feedTrips: refresh ? response.list : [...get().feedTrips, ...response.list],
+        feedTrips: refresh ? list : [...get().feedTrips, ...list],
         isLoading: false,
         isLoadingMore: false,
         feedHasMore: response.list.length === 10,
@@ -80,8 +93,9 @@ export const useTripStore = create<TripState>((set, get) => ({
 
     try {
       const response = await tripService.getTrips(refresh ? 1 : page, 10, filters)
+      const list = response.list.map(normalizeTrip)
       set({
-        trips: refresh ? response.list : [...get().trips, ...response.list],
+        trips: refresh ? list : [...get().trips, ...list],
         isLoading: false,
         isLoadingMore: false,
         hasMore: response.list.length === 10,
@@ -101,7 +115,7 @@ export const useTripStore = create<TripState>((set, get) => ({
     try {
       const response = await tripService.getMyTrips(1, 50)
       set({
-        myTrips: response.list,
+        myTrips: response.list.map(normalizeTrip),
         isLoading: false,
       })
     } catch {
@@ -112,7 +126,7 @@ export const useTripStore = create<TripState>((set, get) => ({
   fetchTripDetail: async (tripId: string) => {
     set({ isLoading: true, currentTrip: null, error: null })
     try {
-      const trip = await tripService.getTripDetail(tripId)
+      const trip = normalizeTrip(await tripService.getTripDetail(tripId))
       set({ currentTrip: trip, isLoading: false })
     } catch {
       set({ isLoading: false, error: '获取行程详情失败' })
@@ -122,7 +136,7 @@ export const useTripStore = create<TripState>((set, get) => ({
   createTrip: async (data: CreateTripDTO) => {
     set({ isLoading: true, error: null })
     try {
-      const newTrip = await tripService.createTrip(data)
+      const newTrip = normalizeTrip(await tripService.createTrip(data))
       set((state) => ({
         trips: [newTrip, ...state.trips],
         myTrips: [newTrip, ...state.myTrips],

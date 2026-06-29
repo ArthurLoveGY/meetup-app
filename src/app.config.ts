@@ -91,4 +91,13 @@ export default defineAppConfig({
     navigationBarTextStyle: 'white',
     backgroundColor: '#F8FAFC',
   },
+  // 组件按需注入，减小包体积
+  lazyCodeLoading: 'requiredComponents',
+  // 定位权限声明（微信小程序必须）
+  permission: {
+    'scope.userLocation': {
+      desc: '用于获取你的位置，以便展示附近的行程',
+    },
+  },
+  requiredPrivateInfos: ['getLocation'],
 })

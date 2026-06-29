@@ -2,9 +2,9 @@
   "miniprogramRoot": "dist/",
   "projectname": "trip-circle",
   "description": "TripCircle - 行程朋友圈",
-  "appid": "wx741c0e7d6827d001",
+  "appid": "wxe09aa37304e34fb4",
   "setting": {
-    "urlCheck": false,
+    "urlCheck": true,
     "es6": true,
     "enhance": true,
     "compileHotReLoad": false,
@@ -17,7 +17,7 @@
     "scopeDataCheck": false,
     "checkInvalidKey": true,
     "checkSiteMap": true,
-    "uploadWithSourceMap": true,
+    "uploadWithSourceMap": false,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],

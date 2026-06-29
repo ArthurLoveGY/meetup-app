@@ -19,6 +19,8 @@ export class UploadService {
     const filename = `${randomUUID()}.${ext}`
     const filepath = join(this.uploadDir, filename)
     writeFileSync(filepath, file.buffer)
-    return { url: `/uploads/${filename}` }
+    // 返回完整 URL，确保小程序 / H5 / App 都能正确加载图片
+    const baseUrl = process.env.SITE_URL || 'https://api.arthurzhang.top'
+    return { url: `${baseUrl}/uploads/${filename}` }
   }
 }

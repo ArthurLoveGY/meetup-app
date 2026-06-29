@@ -9,6 +9,13 @@ const isProd = process.env.NODE_ENV === 'production'
 export const API_BASE_URL = isProd ? 'https://api.arthurzhang.top/api' : 'https://api.arthurzhang.top/api'
 export const SOCKET_BASE_URL = isProd ? 'https://api.arthurzhang.top' : 'https://api.arthurzhang.top'
 
+/** 后端可能返回相对路径（如 /uploads/xxx），统一转换为绝对 URL。 */
+export function resolveImageUrl(url?: string): string {
+  if (!url) return ''
+  if (url.startsWith('http') || url.startsWith('data:') || url.startsWith('wxfile://') || url.startsWith('http://tmp')) return url
+  return `${SOCKET_BASE_URL}${url.startsWith('/') ? '' : '/'}${url}`
+}
+
 // 持久化到本地 storage 前需剔除的敏感字段：weapp 无系统级安全存储区，
 // 这些字段只在登录/请求时即时使用，不落盘。
 export const SENSITIVE_USER_FIELDS = [

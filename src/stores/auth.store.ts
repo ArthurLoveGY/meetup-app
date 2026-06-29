@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import Taro from '@tarojs/taro'
 import { setToken, clearToken } from '../services/request'
 import { authService } from '../services'
-import { sanitizeUser } from '../services/config'
+import { sanitizeUser, resolveImageUrl } from '../services/config'
 import { platformService } from '../platform'
 import type { User } from '../types'
 
@@ -43,6 +43,7 @@ export const useAuthStore = create<AuthState>((set) => ({
 
       setToken(response.token)
       const safeUser = sanitizeUser(response.user)
+      safeUser.avatarUrl = resolveImageUrl(safeUser.avatarUrl)
       Taro.setStorageSync('userInfo', safeUser)
       set({
         token: response.token,
@@ -82,6 +83,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     try {
       const user = await authService.getCurrentUser()
       const safeUser = sanitizeUser(user)
+      safeUser.avatarUrl = resolveImageUrl(safeUser.avatarUrl)
       Taro.setStorageSync('userInfo', safeUser)
       set({ isLoggedIn: true, token, user: safeUser })
     } catch {
@@ -94,6 +96,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   updateProfile: async (updates: Partial<User>) => {
     const updatedUser = await authService.updateProfile(updates)
     const safeUser = sanitizeUser(updatedUser)
+    safeUser.avatarUrl = resolveImageUrl(safeUser.avatarUrl)
     Taro.setStorageSync('userInfo', safeUser)
     set({ user: safeUser })
   },

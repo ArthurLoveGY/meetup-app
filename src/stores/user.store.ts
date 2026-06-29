@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { authService } from '../services'
+import { resolveImageUrl } from '../services/config'
 import type { UserProfile } from '../types'
 
 interface UserState {
@@ -24,6 +25,7 @@ export const useUserStore = create<UserState>((set, get) => ({
     set({ isLoading: true, error: null })
     try {
       const profile = await authService.getUserProfile(userId) as UserProfile
+      profile.avatarUrl = resolveImageUrl(profile.avatarUrl)
       set((state) => ({
         profiles: { ...state.profiles, [userId]: profile },
         isLoading: false,

@@ -35,9 +35,22 @@ export class WeappPlatform implements PlatformAdapter {
   }
 
   async getLocation(): Promise<{ latitude: number; longitude: number }> {
-    const res = await Taro.getLocation({
-      type: 'gcj02',
-    })
+    // 先请求授权，若用户拒绝则给出明确提示
+    try {
+      await Taro.authorize({ scope: 'scope.userLocation' })
+    } catch {
+      // 用户曾经拒绝过授权，需要引导去设置页手动开启
+      const open = await Taro.showModal({
+        title: '需要定位权限',
+        content: '请在设置中开启位置权限，以便展示附近行程',
+        confirmText: '去设置',
+      })
+      if (open.confirm) {
+        await Taro.openSetting()
+      }
+      throw new Error('位置权限未授权')
+    }
+    const res = await Taro.getLocation({ type: 'gcj02' })
     return {
       latitude: res.latitude,
       longitude: res.longitude,
