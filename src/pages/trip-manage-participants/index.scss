@@ -1,9 +1,9 @@
 .manage-participants {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: #F8FAFC;
 
   &__header {
-    background: #FF6B35;
+    background: #2563EB;
     padding: 32px 24px;
     display: flex;
     align-items: center;
@@ -43,23 +43,23 @@
     background: #FFFFFF;
     padding: 4px;
     margin: 24px;
-    border-radius: 24px;
+    border-radius: 28px;
   }
 
   &__tab {
     flex: 1;
     text-align: center;
     padding: 12px 0;
-    border-radius: 16px;
+    border-radius: 20px;
 
     &--active {
-      background: #FF6B35;
+      background: #2563EB;
     }
   }
 
   &__tab-text {
     font-size: 24px;
-    color: #666666;
+    color: #64748B;
 
     .manage-participants__tab--active & {
       color: #fff;
@@ -75,7 +75,7 @@
     background: #FFFFFF;
     padding: 16px 24px;
     margin: 0 24px 16px;
-    border-radius: 16px;
+    border-radius: 20px;
   }
 
   &__select-all {
@@ -86,21 +86,21 @@
 
   &__select-all-text {
     font-size: 28px;
-    color: #333333;
+    color: #1E293B;
   }
 
   &__checkbox {
     width: 40px;
     height: 40px;
-    border: 2px solid #CCCCCC;
-    border-radius: 8px;
+    border: 2px solid #CBD5E1;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
 
     &--checked {
-      background: #FF6B35;
-      border-color: #FF6B35;
+      background: #2563EB;
+      border-color: #2563EB;
     }
   }
 
@@ -120,11 +120,11 @@
     border-radius: 999px;
 
     &--approve {
-      background: #52C41A;
+      background: #10B981;
     }
 
     &--reject {
-      background: #FF4D4F;
+      background: #EF4444;
     }
   }
 
@@ -146,7 +146,7 @@
     display: flex;
     align-items: center;
     background: #FFFFFF;
-    border-radius: 24px;
+    border-radius: 28px;
     padding: 24px;
     margin-bottom: 16px;
   }
@@ -164,14 +164,14 @@
   &__name {
     font-size: 32px;
     font-weight: 600;
-    color: #333333;
+    color: #1E293B;
     display: block;
     margin-bottom: 4px;
   }
 
   &__note {
     font-size: 20px;
-    color: #999999;
+    color: #94A3B8;
     display: block;
     margin-bottom: 8px;
   }
@@ -191,17 +191,17 @@
     justify-content: center;
 
     &--approve {
-      background: #52C41A;
+      background: #10B981;
     }
 
     &--reject {
-      background: #F5F5F5;
-      border: 1px solid #EEEEEE;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
     }
 
     &--remove {
-      background: #F5F5F5;
-      border: 1px solid #FF4D4F;
+      background: #F8FAFC;
+      border: 1px solid #EF4444;
       width: auto;
       padding: 0 16px;
       border-radius: 999px;
@@ -217,12 +217,12 @@
     }
 
     .manage-participants__action--reject & {
-      color: #999999;
+      color: #94A3B8;
     }
 
     .manage-participants__action--remove & {
       font-size: 20px;
-      color: #FF4D4F;
+      color: #EF4444;
     }
   }
 }

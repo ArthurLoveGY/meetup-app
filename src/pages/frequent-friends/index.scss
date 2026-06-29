@@ -1,10 +1,10 @@
 .frequent-friends {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: #F8FAFC;
 
   &__header {
-    background: #FF6B35;
-    background: #FF6B35;
+    background: #2563EB;
+    background: #2563EB;
     padding: 32px 24px;
   }
 
@@ -47,7 +47,7 @@
   &__rank-text {
     font-size: 32px;
     font-weight: 700;
-    color: #FF6B35;
+    color: #2563EB;
   }
 
   &__info {
@@ -65,7 +65,7 @@
   &__name {
     font-size: 32px;
     font-weight: 600;
-    color: #333333;
+    color: #1E293B;
   }
 
   &__pin {
@@ -78,14 +78,14 @@
 
   &__stats {
     font-size: 24px;
-    color: #666666;
+    color: #64748B;
     display: block;
     margin-top: 4px;
   }
 
   &__last {
     font-size: 20px;
-    color: #999999;
+    color: #94A3B8;
     display: block;
     margin-top: 2px;
   }
@@ -100,17 +100,17 @@
 
   &__action {
     padding: 6px 16px;
-    background: #F5F5F5;
+    background: #F8FAFC;
     border-radius: 999px;
 
     &--primary {
-      background: #FF6B35;
+      background: #2563EB;
     }
   }
 
   &__action-text {
     font-size: 20px;
-    color: #666666;
+    color: #64748B;
 
     .frequent-friends__action--primary & {
       color: #fff;

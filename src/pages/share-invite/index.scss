@@ -1,10 +1,9 @@
 .share-invite {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: #F8FAFC;
 
   &__header {
-    background: #FF6B35;
-    background: #FF6B35;
+    background: #2563EB;
     padding: 32px 24px 24px;
   }
 
@@ -17,16 +16,16 @@
   &__card {
     margin: 24px;
     background: #FFFFFF;
-    border-radius: 24px;
+    border-radius: 28px;
     overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.06);
   }
 
   &__cover {
     height: 200px;
     background-size: cover;
     background-position: center;
-    background-color: #FF8F66;
+    background-color: #3B82F6;
   }
 
   &__card-content {
@@ -35,7 +34,7 @@
 
   &__card-tag {
     display: inline-block;
-    background: rgba(255, 107, 53, 0.1);
+    background: rgba(37, 99, 235, 0.1);
     padding: 4px 12px;
     border-radius: 999px;
     margin-bottom: 16px;
@@ -43,13 +42,13 @@
 
   &__card-tag-text {
     font-size: 20px;
-    color: #FF6B35;
+    color: #2563EB;
   }
 
   &__card-title {
     font-size: 36px;
     font-weight: 700;
-    color: #333333;
+    color: #1E293B;
     display: block;
     margin-bottom: 24px;
   }
@@ -67,7 +66,7 @@
 
   &__card-text {
     font-size: 24px;
-    color: #666666;
+    color: #64748B;
   }
 
   &__card-footer {
@@ -76,7 +75,7 @@
     justify-content: space-between;
     margin-top: 24px;
     padding-top: 24px;
-    border-top: 1px solid #F0F0F0;
+    border-top: 1px solid #F1F5F9;
   }
 
   &__card-creator {
@@ -86,13 +85,13 @@
 
   &__card-creator-name {
     font-size: 24px;
-    color: #666666;
+    color: #64748B;
     margin-left: 8px;
   }
 
   &__card-participants {
     font-size: 20px;
-    color: #999999;
+    color: #94A3B8;
   }
 
   &__actions {
@@ -109,7 +108,7 @@
     justify-content: center;
     padding: 32px;
     background: #FFFFFF;
-    border-radius: 24px;
+    border-radius: 28px;
   }
 
   &__action-icon {
@@ -119,6 +118,6 @@
 
   &__action-text {
     font-size: 24px;
-    color: #333333;
+    color: #1E293B;
   }
 }

@@ -22,8 +22,8 @@ export function UserAvatar({ userId, nickname, avatarUrl, size = 'medium', onCli
 
   function getColor(): string {
     const colors = [
-      '#FF6B35', '#52C41A', '#1890FF', '#722ED1',
-      '#FAAD14', '#FF4D4F', '#13C2C2', '#EB2F96',
+      '#2563EB', '#10B981', '#1890FF', '#722ED1',
+      '#F59E0B', '#EF4444', '#13C2C2', '#EB2F96',
     ]
     const index = userId.charCodeAt(0) % colors.length
     return colors[index]

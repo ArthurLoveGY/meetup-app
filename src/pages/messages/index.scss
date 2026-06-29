@@ -1,10 +1,10 @@
 .messages {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: #F8FAFC;
 
   &__header {
-    background: #FF6B35;
-    background: #FF6B35;
+    background: #2563EB;
+    background: #2563EB;
     padding: 32px 24px 24px;
   }
 
@@ -31,7 +31,7 @@
     margin-bottom: 16px;
 
     &--unread {
-      background: rgba(255, 107, 53, 0.05);
+      background: rgba(37, 99, 235, 0.05);
     }
   }
 
@@ -39,7 +39,7 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: #F5F5F5;
+    background: #F8FAFC;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,19 +66,19 @@
   &__content-title {
     font-size: 28px;
     font-weight: 600;
-    color: #333333;
+    color: #1E293B;
   }
 
   &__content-time {
     font-size: 20px;
-    color: #999999;
+    color: #94A3B8;
     flex-shrink: 0;
     margin-left: 16px;
   }
 
   &__content-text {
     font-size: 24px;
-    color: #666666;
+    color: #64748B;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
@@ -89,7 +89,7 @@
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: #FF4D4F;
+    background: #EF4444;
     flex-shrink: 0;
     margin-left: 16px;
   }

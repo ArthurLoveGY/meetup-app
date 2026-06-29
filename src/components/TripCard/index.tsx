@@ -30,8 +30,8 @@ export function TripCard({ trip, onClick }: TripCardProps) {
   function getStatusColor(): string {
     if (trip.status === 'cancelled') return '#999'
     if (trip.status === 'completed') return '#999'
-    if (trip.maxParticipants && trip.participantCount >= trip.maxParticipants) return '#FAAD14'
-    return '#52C41A'
+    if (trip.maxParticipants && trip.participantCount >= trip.maxParticipants) return '#F59E0B'
+    return '#10B981'
   }
 
   return (

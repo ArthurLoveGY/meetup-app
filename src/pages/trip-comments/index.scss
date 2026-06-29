@@ -1,11 +1,11 @@
 .trip-comments {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: #F8FAFC;
   padding-bottom: 120px;
 
   &__header {
-    background: #FF6B35;
-    background: #FF6B35;
+    background: #2563EB;
+    background: #2563EB;
     padding: 32px 24px;
     display: flex;
     align-items: baseline;
@@ -55,24 +55,24 @@
   &__name {
     font-size: 28px;
     font-weight: 600;
-    color: #333333;
+    color: #1E293B;
   }
 
   &__time {
     font-size: 20px;
-    color: #999999;
+    color: #94A3B8;
   }
 
   &__text {
     font-size: 28px;
-    color: #666666;
+    color: #64748B;
     line-height: 1.5;
   }
 
   &__replies {
     margin-top: 16px;
     padding: 16px;
-    background: #F5F5F5;
+    background: #F8FAFC;
     border-radius: 16px;
   }
 
@@ -87,14 +87,14 @@
 
   &__reply-name {
     font-size: 24px;
-    color: #FF6B35;
+    color: #2563EB;
     margin-right: 8px;
     flex-shrink: 0;
   }
 
   &__reply-text {
     font-size: 24px;
-    color: #666666;
+    color: #64748B;
   }
 
   &__input-bar {
@@ -112,14 +112,14 @@
   &__input {
     flex: 1;
     height: 80px;
-    background: #F5F5F5;
+    background: #F8FAFC;
     border-radius: 999px;
     padding: 0 24px;
     font-size: 28px;
   }
 
   &__send {
-    background: #FF6B35;
+    background: #2563EB;
     padding: 0 32px;
     border-radius: 999px;
     display: flex;

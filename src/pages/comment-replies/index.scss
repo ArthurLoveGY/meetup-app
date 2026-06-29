@@ -1,11 +1,11 @@
 .comment-replies {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: #F8FAFC;
   padding-bottom: 120px;
 
   &__header {
-    background: #FF6B35;
-    background: #FF6B35;
+    background: #2563EB;
+    background: #2563EB;
     padding: 32px 24px 24px;
   }
 
@@ -35,21 +35,21 @@
   &__comment-name {
     font-size: 28px;
     font-weight: 600;
-    color: #333333;
+    color: #1E293B;
     display: block;
     margin-bottom: 8px;
   }
 
   &__comment-text {
     font-size: 28px;
-    color: #666666;
+    color: #64748B;
     display: block;
     margin-bottom: 8px;
   }
 
   &__comment-time {
     font-size: 20px;
-    color: #999999;
+    color: #94A3B8;
   }
 
   &__divider {
@@ -58,7 +58,7 @@
 
   &__divider-text {
     font-size: 24px;
-    color: #999999;
+    color: #94A3B8;
   }
 
   &__replies {
@@ -81,21 +81,21 @@
   &__reply-name {
     font-size: 28px;
     font-weight: 600;
-    color: #333333;
+    color: #1E293B;
     display: block;
     margin-bottom: 8px;
   }
 
   &__reply-text {
     font-size: 28px;
-    color: #666666;
+    color: #64748B;
     display: block;
     margin-bottom: 8px;
   }
 
   &__reply-time {
     font-size: 20px;
-    color: #999999;
+    color: #94A3B8;
   }
 
   &__input-bar {
@@ -113,14 +113,14 @@
   &__input {
     flex: 1;
     height: 80px;
-    background: #F5F5F5;
+    background: #F8FAFC;
     border-radius: 999px;
     padding: 0 24px;
     font-size: 28px;
   }
 
   &__send {
-    background: #FF6B35;
+    background: #2563EB;
     padding: 0 32px;
     border-radius: 999px;
     display: flex;

@@ -1,10 +1,10 @@
 .trip-vote-detail {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: #F8FAFC;
 
   &__header {
-    background: #FF6B35;
-    background: #FF6B35;
+    background: #2563EB;
+    background: #2563EB;
     padding: 32px 24px;
     display: flex;
     align-items: center;
@@ -57,34 +57,34 @@
 
   &__creator {
     font-size: 28px;
-    color: #333333;
+    color: #1E293B;
     display: block;
     margin-bottom: 4px;
   }
 
   &__time {
     font-size: 24px;
-    color: #999999;
+    color: #94A3B8;
     display: block;
     margin-bottom: 4px;
   }
 
   &__deadline {
     font-size: 24px;
-    color: #FAAD14;
+    color: #F59E0B;
     display: block;
   }
 
   &__desc {
     font-size: 28px;
-    color: #666666;
+    color: #64748B;
     margin-bottom: 24px;
     display: block;
   }
 
   &__total {
     font-size: 24px;
-    color: #999999;
+    color: #94A3B8;
     display: block;
   }
 
@@ -100,8 +100,8 @@
     border: 2px solid transparent;
 
     &--selected {
-      border-color: #FF6B35;
-      background: rgba(255, 107, 53, 0.05);
+      border-color: #2563EB;
+      background: rgba(37, 99, 235, 0.05);
     }
   }
 
@@ -115,17 +115,17 @@
   &__option-text {
     font-size: 32px;
     font-weight: 600;
-    color: #333333;
+    color: #1E293B;
   }
 
   &__option-count {
     font-size: 24px;
-    color: #999999;
+    color: #94A3B8;
   }
 
   &__option-bar {
     height: 12px;
-    background: #F0F0F0;
+    background: #F1F5F9;
     border-radius: 6px;
     overflow: hidden;
     margin-bottom: 16px;
@@ -133,7 +133,7 @@
 
   &__option-bar-fill {
     height: 100%;
-    background: #FF6B35;
+    background: #2563EB;
     border-radius: 6px;
     transition: width 0.3s;
   }
@@ -152,6 +152,6 @@
 
   &__voter-name {
     font-size: 20px;
-    color: #666666;
+    color: #64748B;
   }
 }

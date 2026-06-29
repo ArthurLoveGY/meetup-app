@@ -33,11 +33,11 @@ export const JOIN_RULES = [
 
 export const PARTICIPANT_STATUSES = [
   { value: 'interested', label: '想去', color: '#1890FF' },
-  { value: 'confirmed', label: '确认参加', color: '#52C41A' },
-  { value: 'uncertain', label: '暂不确定', color: '#FAAD14' },
+  { value: 'confirmed', label: '确认参加', color: '#10B981' },
+  { value: 'uncertain', label: '暂不确定', color: '#F59E0B' },
   { value: 'waitlist', label: '候补', color: '#722ED1' },
-  { value: 'declined', label: '不参加', color: '#999999' },
-  { value: 'cancelled', label: '已取消', color: '#FF4D4F' },
+  { value: 'declined', label: '不参加', color: '#94A3B8' },
+  { value: 'cancelled', label: '已取消', color: '#EF4444' },
 ] as const
 
 export const MAX_TITLE_LENGTH = 50

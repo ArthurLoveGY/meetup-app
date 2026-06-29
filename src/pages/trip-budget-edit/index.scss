@@ -1,11 +1,10 @@
 .trip-budget-edit {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: #F8FAFC;
   padding-bottom: 120px;
 
   &__header {
-    background: #FF6B35;
-    background: #FF6B35;
+    background: #2563EB;
     padding: 32px 24px;
     display: flex;
     align-items: center;
@@ -33,7 +32,7 @@
     background: #FFFFFF;
     padding: 32px;
     margin: 24px;
-    border-radius: 24px;
+    border-radius: 28px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -41,13 +40,13 @@
 
   &__total-label {
     font-size: 32px;
-    color: #333333;
+    color: #1E293B;
   }
 
   &__total-value {
     font-size: 44px;
     font-weight: 700;
-    color: #FF6B35;
+    color: #2563EB;
   }
 
   &__scroll {
@@ -60,7 +59,7 @@
 
   &__item {
     background: #FFFFFF;
-    border-radius: 24px;
+    border-radius: 28px;
     padding: 24px;
     margin-bottom: 24px;
   }
@@ -74,24 +73,24 @@
 
   &__item-category {
     padding: 6px 16px;
-    background: rgba(255, 107, 53, 0.1);
+    background: rgba(37, 99, 235, 0.1);
     border-radius: 999px;
   }
 
   &__item-category-text {
     font-size: 20px;
-    color: #FF6B35;
+    color: #2563EB;
   }
 
   &__item-remove {
     padding: 6px 16px;
-    background: rgba(255, 77, 79, 0.1);
+    background: rgba(239, 68, 68, 0.1);
     border-radius: 999px;
   }
 
   &__item-remove-text {
     font-size: 20px;
-    color: #FF4D4F;
+    color: #EF4444;
   }
 
   &__item-fields {
@@ -105,7 +104,7 @@
 
   &__item-label {
     font-size: 20px;
-    color: #999999;
+    color: #94A3B8;
     margin-bottom: 4px;
     display: block;
   }
@@ -113,8 +112,8 @@
   &__item-input {
     width: 100%;
     height: 72px;
-    background: #F5F5F5;
-    border-radius: 16px;
+    background: #F8FAFC;
+    border-radius: 20px;
     padding: 0 24px;
     font-size: 28px;
     box-sizing: border-box;
@@ -134,8 +133,8 @@
     display: block;
     width: 100%;
     padding: 24px 0;
-    background: #FF6B35;
-    border-radius: 24px;
+    background: #2563EB;
+    border-radius: 28px;
     text-align: center;
     font-size: 32px;
     font-weight: 600;

@@ -1,9 +1,9 @@
 .trip-review {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: #F8FAFC;
 
   &__header {
-    background: #FF6B35;
+    background: #2563EB;
     padding: 32px 24px 24px;
   }
 
@@ -27,20 +27,20 @@
   &__trip-title {
     font-size: 36px;
     font-weight: 700;
-    color: #333333;
+    color: #1E293B;
     display: block;
     margin-bottom: 8px;
   }
 
   &__date {
     font-size: 28px;
-    color: #666666;
+    color: #64748B;
   }
 
   &__section-title {
     font-size: 32px;
     font-weight: 600;
-    color: #333333;
+    color: #1E293B;
     margin-bottom: 24px;
     display: block;
   }
@@ -59,7 +59,7 @@
 
   &__participant-name {
     font-size: 20px;
-    color: #666666;
+    color: #64748B;
     margin-top: 8px;
   }
 
@@ -103,9 +103,9 @@
 
   &__photo-add {
     aspect-ratio: 1;
-    background: #F5F5F5;
+    background: #F8FAFC;
     border-radius: 16px;
-    border: 2px dashed #CCCCCC;
+    border: 2px dashed #CBD5E1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -114,19 +114,19 @@
 
   &__photo-add-icon {
     font-size: 56px;
-    color: #CCCCCC;
+    color: #CBD5E1;
     line-height: 1;
   }
 
   &__photo-add-text {
     font-size: 20px;
-    color: #999999;
+    color: #94A3B8;
     margin-top: 8px;
   }
 
   &__photo-hint {
     font-size: 24px;
-    color: #999999;
+    color: #94A3B8;
     text-align: center;
     margin-top: 16px;
     display: block;
@@ -134,7 +134,7 @@
 
   &__summary {
     font-size: 28px;
-    color: #666666;
+    color: #64748B;
     line-height: 1.6;
   }
 
@@ -156,7 +156,7 @@
 
   &__highlight-text {
     font-size: 28px;
-    color: #333333;
+    color: #1E293B;
   }
 
   &__actions {
@@ -169,19 +169,19 @@
     flex: 1;
     padding: 24px 0;
     background: #FFFFFF;
-    border: 2px solid #FF6B35;
+    border: 2px solid #2563EB;
     border-radius: 24px;
     text-align: center;
 
     &--share {
-      background: #FF6B35;
+      background: #2563EB;
     }
   }
 
   &__action-text {
     font-size: 28px;
     font-weight: 600;
-    color: #FF6B35;
+    color: #2563EB;
 
     .trip-review__action--share & {
       color: #fff;

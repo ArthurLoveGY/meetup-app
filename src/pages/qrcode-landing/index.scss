@@ -1,7 +1,7 @@
 .qrcode-landing {
   min-height: 100vh;
-  background: #FF6B35;
-  background: #FF6B35;
+  background: #2563EB;
+  background: #2563EB;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,9 +34,9 @@
   &__content {
     width: 100%;
     background: #FFFFFF;
-    border-radius: 24px;
+    border-radius: 28px;
     padding: 48px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.04), 0 4px 6px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,14 +50,14 @@
   &__text {
     font-size: 36px;
     font-weight: 600;
-    color: #333333;
+    color: #1E293B;
     text-align: center;
     margin-bottom: 16px;
   }
 
   &__desc {
     font-size: 28px;
-    color: #999999;
+    color: #94A3B8;
     text-align: center;
     margin-bottom: 48px;
   }
@@ -72,13 +72,13 @@
   &__btn {
     width: 100%;
     padding: 28px 0;
-    background: #FF6B35;
-    border-radius: 24px;
+    background: #2563EB;
+    border-radius: 28px;
     text-align: center;
 
     &--secondary {
       background: transparent;
-      border: 2px solid #FF6B35;
+      border: 2px solid #2563EB;
     }
   }
 
@@ -88,7 +88,7 @@
     color: #fff;
 
     .qrcode-landing__btn--secondary & {
-      color: #FF6B35;
+      color: #2563EB;
     }
   }
 }

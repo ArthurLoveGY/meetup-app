@@ -1,14 +1,14 @@
 .friend-profile {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: #F8FAFC;
 
   &__scroll {
     height: 100vh;
   }
 
   &__header {
-    background: #FF6B35;
-    background: #FF6B35;
+    background: #2563EB;
+    background: #2563EB;
     padding: 48px 24px 32px;
     display: flex;
     flex-direction: column;
@@ -100,7 +100,7 @@
     color: #fff;
 
     .friend-profile__action--primary & {
-      color: #FF6B35;
+      color: #2563EB;
     }
   }
 
@@ -119,13 +119,13 @@
     border-radius: 16px;
 
     &--active {
-      background: #FF6B35;
+      background: #2563EB;
     }
   }
 
   &__tab-text {
     font-size: 24px;
-    color: #666666;
+    color: #64748B;
 
     .friend-profile__tab--active & {
       color: #fff;

@@ -1,10 +1,10 @@
 .friend-requests {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: #F8FAFC;
 
   &__header {
-    background: #FF6B35;
-    background: #FF6B35;
+    background: #2563EB;
+    background: #2563EB;
     padding: 32px 24px;
     display: flex;
     align-items: baseline;
@@ -48,23 +48,23 @@
   &__name {
     font-size: 32px;
     font-weight: 600;
-    color: #333333;
+    color: #1E293B;
     display: block;
   }
 
   &__message {
     font-size: 24px;
-    color: #666666;
+    color: #64748B;
     display: block;
     margin-top: 8px;
     padding: 8px 12px;
-    background: #F5F5F5;
+    background: #F8FAFC;
     border-radius: 16px;
   }
 
   &__time {
     font-size: 20px;
-    color: #999999;
+    color: #94A3B8;
     display: block;
     margin-top: 8px;
   }
@@ -83,12 +83,12 @@
     text-align: center;
 
     &--accept {
-      background: #FF6B35;
+      background: #2563EB;
     }
 
     &--reject {
-      background: #F5F5F5;
-      border: 1px solid #EEEEEE;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
     }
   }
 
@@ -100,7 +100,7 @@
     }
 
     .friend-requests__btn--reject & {
-      color: #666666;
+      color: #64748B;
     }
   }
 }

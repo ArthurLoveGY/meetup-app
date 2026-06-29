@@ -2,7 +2,7 @@
   background: #FFFFFF;
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
   margin-bottom: 24px;
 
   &__cover {
@@ -24,7 +24,7 @@
   &__type-tag {
     display: flex;
     align-items: center;
-    background: rgba(255, 107, 53, 0.1);
+    background: rgba(37, 99, 235, 0.08);
     padding: 4px 12px;
     border-radius: 999px;
   }
@@ -36,7 +36,7 @@
 
   &__type-text {
     font-size: 20px;
-    color: #FF6B35;
+    color: #2563EB;
   }
 
   &__status {
@@ -52,7 +52,7 @@
   &__title {
     font-size: 32px;
     font-weight: 600;
-    color: #333333;
+    color: #1E293B;
     margin-bottom: 16px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -73,21 +73,21 @@
 
   &__info-text {
     font-size: 24px;
-    color: #666666;
+    color: #64748B;
   }
 
   &__countdown {
     margin-left: auto;
     font-size: 20px;
-    color: #FF6B35;
-    background: rgba(255, 107, 53, 0.1);
+    color: #2563EB;
+    background: rgba(37, 99, 235, 0.08);
     padding: 2px 8px;
     border-radius: 999px;
   }
 
   &__desc {
     font-size: 24px;
-    color: #999999;
+    color: #94A3B8;
     margin-bottom: 16px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -100,7 +100,7 @@
     align-items: center;
     justify-content: space-between;
     padding-top: 16px;
-    border-top: 1px solid #F0F0F0;
+    border-top: 1px solid #F1F5F9;
   }
 
   &__creator {
@@ -110,7 +110,7 @@
 
   &__creator-name {
     font-size: 24px;
-    color: #666666;
+    color: #64748B;
     margin-left: 8px;
   }
 
@@ -129,7 +129,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #F5F5F5;
+    background: #F8FAFC;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -139,17 +139,17 @@
 
   &__avatar-more-text {
     font-size: 20px;
-    color: #999999;
+    color: #94A3B8;
   }
 
   &__participant-count {
     font-size: 20px;
-    color: #999999;
+    color: #94A3B8;
   }
 
   &__my-status {
     margin-top: 16px;
     padding-top: 16px;
-    border-top: 1px solid #F0F0F0;
+    border-top: 1px solid #F1F5F9;
   }
 }

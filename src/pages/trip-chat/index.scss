@@ -1,12 +1,12 @@
 .trip-chat {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: #F8FAFC;
   display: flex;
   flex-direction: column;
 
   &__header {
-    background: #FF6B35;
-    background: #FF6B35;
+    background: #2563EB;
+    background: #2563EB;
     padding: 32px 24px;
     display: flex;
     align-items: baseline;
@@ -56,7 +56,7 @@
 
   &__message-name {
     font-size: 20px;
-    color: #999999;
+    color: #94A3B8;
     margin-bottom: 4px;
     display: block;
   }
@@ -67,13 +67,13 @@
     padding: 16px 24px;
 
     .trip-chat__message--me & {
-      background: #FF6B35;
+      background: #2563EB;
     }
   }
 
   &__message-text {
     font-size: 28px;
-    color: #333333;
+    color: #1E293B;
 
     .trip-chat__message--me & {
       color: #fff;
@@ -82,7 +82,7 @@
 
   &__message-time {
     font-size: 20px;
-    color: #999999;
+    color: #94A3B8;
     margin-top: 4px;
   }
 
@@ -97,14 +97,14 @@
   &__input {
     flex: 1;
     height: 80px;
-    background: #F5F5F5;
+    background: #F8FAFC;
     border-radius: 999px;
     padding: 0 24px;
     font-size: 28px;
   }
 
   &__send {
-    background: #FF6B35;
+    background: #2563EB;
     padding: 0 32px;
     border-radius: 999px;
     display: flex;

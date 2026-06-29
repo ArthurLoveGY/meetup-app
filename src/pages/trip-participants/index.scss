@@ -1,9 +1,9 @@
 .trip-participants {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: #F8FAFC;
 
   &__header {
-    background: #FF6B35;
+    background: #2563EB;
     padding: 32px 24px;
     display: flex;
     align-items: baseline;
@@ -47,13 +47,13 @@
   &__name {
     font-size: 32px;
     font-weight: 600;
-    color: #333333;
+    color: #1E293B;
     display: block;
   }
 
   &__note {
     font-size: 24px;
-    color: #999999;
+    color: #94A3B8;
     display: block;
     margin-top: 4px;
     overflow: hidden;

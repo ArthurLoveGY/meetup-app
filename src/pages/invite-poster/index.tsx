@@ -39,7 +39,7 @@ export default function InvitePoster() {
             ctx.scale(dpr, dpr)
 
             // Draw poster background
-            ctx.fillStyle = '#FF6B35'
+            ctx.fillStyle = '#2563EB'
             ctx.fillRect(0, 0, 375, 667)
 
             // Draw title

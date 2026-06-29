@@ -48,7 +48,7 @@ export default defineAppConfig({
   ],
   tabBar: {
     color: '#999',
-    selectedColor: '#FF6B35',
+    selectedColor: '#2563EB',
     backgroundColor: '#ffffff',
     borderStyle: 'white',
     list: [
@@ -86,9 +86,9 @@ export default defineAppConfig({
   },
   window: {
     backgroundTextStyle: 'light',
-    navigationBarBackgroundColor: '#FF6B35',
+    navigationBarBackgroundColor: '#2563EB',
     navigationBarTitleText: 'TripCircle',
     navigationBarTextStyle: 'white',
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#F8FAFC',
   },
 })

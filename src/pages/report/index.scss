@@ -1,11 +1,11 @@
 .report {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: #F8FAFC;
   padding-bottom: 140px;
 
   &__header {
-    background: #FF6B35;
-    background: #FF6B35;
+    background: #2563EB;
+    background: #2563EB;
     padding: 32px 24px 24px;
   }
 
@@ -29,7 +29,7 @@
   &__section-title {
     font-size: 32px;
     font-weight: 600;
-    color: #333333;
+    color: #1E293B;
     margin-bottom: 24px;
     display: block;
   }
@@ -42,29 +42,29 @@
 
   &__reason {
     padding: 12px 24px;
-    background: #F5F5F5;
+    background: #F8FAFC;
     border-radius: 999px;
     border: 2px solid transparent;
 
     &--selected {
-      border-color: #FF6B35;
-      background: rgba(255, 107, 53, 0.1);
+      border-color: #2563EB;
+      background: rgba(37, 99, 235, 0.08);
     }
   }
 
   &__reason-text {
     font-size: 24px;
-    color: #666666;
+    color: #64748B;
 
     .report__reason--selected & {
-      color: #FF6B35;
+      color: #2563EB;
     }
   }
 
   &__textarea {
     width: 100%;
     min-height: 200px;
-    background: #F5F5F5;
+    background: #F8FAFC;
     border-radius: 16px;
     padding: 24px;
     font-size: 28px;
@@ -84,7 +84,7 @@
   &__submit {
     width: 100%;
     padding: 24px 0;
-    background: #FF4D4F;
+    background: #EF4444;
     border-radius: 24px;
     text-align: center;
 

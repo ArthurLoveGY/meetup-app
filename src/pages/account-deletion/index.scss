@@ -1,11 +1,10 @@
 .account-deletion {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: #F8FAFC;
   padding-bottom: 140px;
 
   &__header {
-    background: #FF4D4F;
-    background: #FF4D4F;
+    background: #EF4444;
     padding: 32px 24px 24px;
   }
 
@@ -22,7 +21,7 @@
   &__warning {
     background: #FFFFFF;
     margin: 24px;
-    border-radius: 24px;
+    border-radius: 28px;
     padding: 24px;
     display: flex;
     align-items: flex-start;
@@ -36,14 +35,14 @@
   &__warning-title {
     font-size: 32px;
     font-weight: 600;
-    color: #FF4D4F;
+    color: #EF4444;
     flex: 1;
   }
 
   &__consequences {
     background: #FFFFFF;
     margin: 0 24px 24px;
-    border-radius: 24px;
+    border-radius: 28px;
     padding: 24px;
   }
 
@@ -65,28 +64,28 @@
 
   &__item-text {
     font-size: 28px;
-    color: #666666;
+    color: #64748B;
     line-height: 1.5;
   }
 
   &__info {
     background: #FFFFFF;
     margin: 0 24px 24px;
-    border-radius: 24px;
+    border-radius: 28px;
     padding: 24px;
   }
 
   &__info-title {
     font-size: 32px;
     font-weight: 600;
-    color: #333333;
+    color: #1E293B;
     display: block;
     margin-bottom: 16px;
   }
 
   &__info-item {
     font-size: 28px;
-    color: #666666;
+    color: #64748B;
     display: block;
     margin-bottom: 4px;
   }
@@ -94,7 +93,7 @@
   &__confirm {
     background: #FFFFFF;
     margin: 0 24px 24px;
-    border-radius: 24px;
+    border-radius: 28px;
     padding: 24px;
     display: flex;
     align-items: center;
@@ -103,8 +102,8 @@
   &__checkbox {
     width: 40px;
     height: 40px;
-    border-radius: 8px;
-    border: 2px solid #EEEEEE;
+    border-radius: 12px;
+    border: 2px solid #E2E8F0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,8 +111,8 @@
     flex-shrink: 0;
 
     &--checked {
-      background: #FF4D4F;
-      border-color: #FF4D4F;
+      background: #EF4444;
+      border-color: #EF4444;
     }
   }
 
@@ -125,7 +124,7 @@
 
   &__confirm-text {
     font-size: 28px;
-    color: #333333;
+    color: #1E293B;
   }
 
   &__bottom {
@@ -141,12 +140,12 @@
   &__btn {
     width: 100%;
     padding: 24px 0;
-    background: #FF4D4F;
-    border-radius: 24px;
+    background: #EF4444;
+    border-radius: 28px;
     text-align: center;
 
     &--disabled {
-      background: #CCCCCC;
+      background: #CBD5E1;
     }
 
     &--loading {

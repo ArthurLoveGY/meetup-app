@@ -1,6 +1,6 @@
 .trip-detail {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: #F8FAFC;
   padding-bottom: 140px;
 
   &__scroll {
@@ -24,20 +24,20 @@
   }
 
   &__type-tag {
-    background: rgba(255, 107, 53, 0.1);
+    background: rgba(37, 99, 235, 0.08);
     padding: 6px 16px;
     border-radius: 999px;
   }
 
   &__type-text {
     font-size: 24px;
-    color: #FF6B35;
+    color: #2563EB;
   }
 
   &__status {
     padding: 6px 16px;
     border-radius: 999px;
-    background: #52C41A;
+    background: #10B981;
   }
 
   &__status-text {
@@ -48,7 +48,7 @@
   &__title {
     font-size: 44px;
     font-weight: 700;
-    color: #333333;
+    color: #1E293B;
     margin-bottom: 32px;
     display: block;
   }
@@ -65,7 +65,7 @@
     padding: 16px 0;
 
     &:not(:last-child) {
-      border-bottom: 1px solid #F0F0F0;
+      border-bottom: 1px solid #F1F5F9;
     }
   }
 
@@ -81,20 +81,20 @@
 
   &__meta-label {
     font-size: 20px;
-    color: #999999;
+    color: #94A3B8;
     display: block;
     margin-bottom: 4px;
   }
 
   &__meta-value {
     font-size: 28px;
-    color: #333333;
+    color: #1E293B;
     display: block;
   }
 
   &__meta-sub {
     font-size: 24px;
-    color: #666666;
+    color: #64748B;
     display: block;
     margin-top: 4px;
   }
@@ -102,8 +102,8 @@
   &__countdown {
     display: inline-block;
     font-size: 20px;
-    color: #FF6B35;
-    background: rgba(255, 107, 53, 0.1);
+    color: #2563EB;
+    background: rgba(37, 99, 235, 0.08);
     padding: 4px 12px;
     border-radius: 999px;
     margin-top: 8px;
@@ -119,14 +119,14 @@
   &__section-title {
     font-size: 32px;
     font-weight: 600;
-    color: #333333;
+    color: #1E293B;
     margin-bottom: 24px;
     display: block;
   }
 
   &__description {
     font-size: 28px;
-    color: #666666;
+    color: #64748B;
     line-height: 1.6;
     white-space: pre-wrap;
   }
@@ -139,14 +139,14 @@
   }
 
   &__tag {
-    background: rgba(255, 107, 53, 0.1);
+    background: rgba(37, 99, 235, 0.08);
     padding: 6px 16px;
     border-radius: 999px;
   }
 
   &__tag-text {
     font-size: 24px;
-    color: #FF6B35;
+    color: #2563EB;
   }
 
   &__tabs {
@@ -164,13 +164,13 @@
     border-radius: 16px;
 
     &--active {
-      background: #FF6B35;
+      background: #2563EB;
     }
   }
 
   &__tab-text {
     font-size: 24px;
-    color: #666666;
+    color: #64748B;
 
     .trip-detail__tab--active & {
       color: #fff;
@@ -194,13 +194,13 @@
   &__creator-name {
     font-size: 32px;
     font-weight: 600;
-    color: #333333;
+    color: #1E293B;
     display: block;
   }
 
   &__creator-trips {
     font-size: 24px;
-    color: #999999;
+    color: #94A3B8;
     display: block;
     margin-top: 4px;
   }
@@ -218,7 +218,7 @@
 
   &__manage-btn {
     padding: 6px 16px;
-    background: #FF6B35;
+    background: #2563EB;
     border-radius: 999px;
   }
 
@@ -242,7 +242,7 @@
 
   &__participant-name {
     font-size: 20px;
-    color: #666666;
+    color: #64748B;
     margin-top: 8px;
     text-align: center;
     overflow: hidden;
@@ -260,7 +260,7 @@
 
   &__more-text {
     font-size: 20px;
-    color: #FF6B35;
+    color: #2563EB;
   }
 
   &__comments-header {
@@ -270,7 +270,7 @@
   }
 
   &__add-comment {
-    background: #FF6B35;
+    background: #2563EB;
     padding: 8px 20px;
     border-radius: 999px;
   }
@@ -310,21 +310,21 @@
     text-align: center;
 
     &--join {
-      background: #FF6B35;
+      background: #2563EB;
     }
 
     &--edit {
-      background: #FF6B35;
+      background: #2563EB;
     }
 
     &--share {
-      background: #F5F5F5;
-      border: 2px solid #EEEEEE;
+      background: #F8FAFC;
+      border: 2px solid #E2E8F0;
     }
 
     &--leave {
-      background: #F5F5F5;
-      border: 2px solid #FF4D4F;
+      background: #F8FAFC;
+      border: 2px solid #EF4444;
     }
   }
 
@@ -338,7 +338,7 @@
     }
 
     .trip-detail__btn--leave & {
-      color: #FF4D4F;
+      color: #EF4444;
     }
   }
 
@@ -354,32 +354,32 @@
     align-items: center;
     justify-content: center;
     padding: 24px 0;
-    background: linear-gradient(135deg, #FFF5F0 0%, #FFEDE5 100%);
+    background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
     border-radius: 20px;
-    border: 2px solid rgba(255, 107, 53, 0.1);
+    border: 2px solid rgba(37, 99, 235, 0.1);
     transition: all 0.3s ease;
 
     &:active {
       transform: scale(0.95);
-      background: linear-gradient(135deg, #FFE5D9 0%, #FFD9C7 100%);
-      border-color: rgba(255, 107, 53, 0.3);
+      background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%);
+      border-color: rgba(37, 99, 235, 0.3);
     }
 
     &--danger {
-      background: linear-gradient(135deg, #FFF1F0 0%, #FFE7E6 100%);
-      border-color: rgba(255, 77, 79, 0.15);
+      background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%);
+      border-color: rgba(239, 68, 68, 0.15);
 
       &:active {
-        background: linear-gradient(135deg, #FFE0DF 0%, #FFD0CF 100%);
-        border-color: rgba(255, 77, 79, 0.3);
+        background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%);
+        border-color: rgba(239, 68, 68, 0.3);
       }
 
       .trip-detail__action-icon {
-        background: rgba(255, 77, 79, 0.12);
+        background: rgba(239, 68, 68, 0.12);
       }
 
       .trip-detail__action-text {
-        color: #FF4D4F;
+        color: #EF4444;
       }
     }
   }
@@ -391,7 +391,7 @@
     align-items: center;
     justify-content: center;
     font-size: 40px;
-    background: rgba(255, 107, 53, 0.12);
+    background: rgba(37, 99, 235, 0.12);
     border-radius: 20px;
     margin-bottom: 16px;
   }
@@ -399,7 +399,7 @@
   &__action-text {
     font-size: 22px;
     font-weight: 500;
-    color: #333333;
+    color: #1E293B;
     text-align: center;
   }
 
@@ -425,7 +425,7 @@
   &__status-title {
     font-size: 32px;
     font-weight: 600;
-    color: #333333;
+    color: #1E293B;
     text-align: center;
     margin-bottom: 32px;
     display: block;
@@ -447,7 +447,7 @@
 
   &__time-text {
     font-size: 24px;
-    color: #666666;
+    color: #64748B;
     font-weight: 600;
   }
 
@@ -463,14 +463,14 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #FF6B35;
+    background: #2563EB;
     flex-shrink: 0;
   }
 
   &__line {
     width: 2px;
     flex: 1;
-    background: #EEEEEE;
+    background: #E2E8F0;
     margin-top: 8px;
   }
 
@@ -481,14 +481,14 @@
   &__title {
     font-size: 28px;
     font-weight: 600;
-    color: #333333;
+    color: #1E293B;
     display: block;
     margin-bottom: 4px;
   }
 
   &__desc {
     font-size: 24px;
-    color: #666666;
+    color: #64748B;
     display: block;
   }
 
@@ -505,14 +505,14 @@
 
   &__location-text {
     font-size: 20px;
-    color: #FF6B35;
+    color: #2563EB;
   }
 }
 
 .checklist-item {
   display: flex;
   padding: 24px;
-  background: #F5F5F5;
+  background: #F8FAFC;
   border-radius: 16px;
 
   &--checked {
@@ -528,14 +528,14 @@
     width: 40px;
     height: 40px;
     border-radius: 8px;
-    border: 2px solid #EEEEEE;
+    border: 2px solid #E2E8F0;
     display: flex;
     align-items: center;
     justify-content: center;
 
     &--checked {
-      background: #FF6B35;
-      border-color: #FF6B35;
+      background: #2563EB;
+      border-color: #2563EB;
     }
   }
 
@@ -551,13 +551,13 @@
 
   &__title {
     font-size: 28px;
-    color: #333333;
+    color: #1E293B;
     display: block;
   }
 
   &__desc {
     font-size: 24px;
-    color: #999999;
+    color: #94A3B8;
     display: block;
     margin-top: 4px;
   }
@@ -565,13 +565,13 @@
   &__required {
     display: inline-block;
     margin-top: 8px;
-    background: rgba(255, 77, 79, 0.1);
+    background: rgba(239, 68, 68, 0.1);
     padding: 2px 8px;
     border-radius: 999px;
   }
 
   &__required-text {
     font-size: 20px;
-    color: #FF4D4F;
+    color: #EF4444;
   }
 }

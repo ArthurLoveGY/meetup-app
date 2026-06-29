@@ -1,10 +1,10 @@
 .notification-detail {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: #F8FAFC;
 
   &__header {
-    background: #FF6B35;
-    background: #FF6B35;
+    background: #2563EB;
+    background: #2563EB;
     padding: 32px 24px 24px;
   }
 
@@ -24,17 +24,17 @@
   &__meta {
     margin-bottom: 24px;
     padding-bottom: 24px;
-    border-bottom: 1px solid #F0F0F0;
+    border-bottom: 1px solid #F1F5F9;
   }
 
   &__time {
     font-size: 24px;
-    color: #999999;
+    color: #94A3B8;
   }
 
   &__text {
     font-size: 28px;
-    color: #333333;
+    color: #1E293B;
     line-height: 1.8;
     white-space: pre-wrap;
   }
@@ -42,7 +42,7 @@
   &__action {
     margin: 24px;
     padding: 24px 0;
-    background: #FF6B35;
+    background: #2563EB;
     border-radius: 24px;
     text-align: center;
   }

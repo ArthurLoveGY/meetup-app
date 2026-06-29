@@ -1,12 +1,12 @@
 .trip-feed {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: #F8FAFC;
   display: flex;
   flex-direction: column;
 
   &__header {
     padding: 32px 24px 16px;
-    background: #FF6B35;
+    background: #2563EB;
     flex-shrink: 0;
   }
 
@@ -86,7 +86,7 @@
   }
 
   &__filter--active &__filter-text {
-    color: #FF6B35;
+    color: #2563EB;
   }
 
   &__scroll {
@@ -109,28 +109,31 @@
 
   &__end-text {
     font-size: 24px;
-    color: #999999;
+    color: #94A3B8;
   }
 
   &__fab {
-    position: absolute;
-    right: 32px;
-    bottom: 200px;
-    width: 112px;
-    height: 112px;
+    position: fixed;
+    right: 28px;
+    bottom: 140px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
-    background: #FF6B35;
+    background: #2563EB;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 24px rgba(255, 107, 53, 0.4);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
     z-index: 100;
   }
 
   &__fab-icon {
-    font-size: 56px;
+    font-size: 44px;
     color: #fff;
     font-weight: 300;
-    line-height: 1;
+    line-height: 96px;
+    text-align: center;
+    display: block;
+    width: 100%;
   }
 }

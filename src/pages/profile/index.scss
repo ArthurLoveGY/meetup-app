@@ -1,6 +1,6 @@
 .profile {
   min-height: 100vh;
-  background: #F5F5F5;
+  background: #F8FAFC;
 
   &__scroll {
     height: 100vh;
@@ -22,13 +22,13 @@
   &__login-title {
     font-size: 44px;
     font-weight: 700;
-    color: #333333;
+    color: #1E293B;
     margin-bottom: 16px;
   }
 
   &__login-desc {
     font-size: 28px;
-    color: #999999;
+    color: #94A3B8;
     margin-bottom: 48px;
   }
 
@@ -47,8 +47,8 @@
   }
 
   &__header {
-    background: #FF6B35;
-    background: #FF6B35;
+    background: #2563EB;
+    background: #2563EB;
     padding: 48px 24px 32px;
   }
 
@@ -151,13 +151,13 @@
     border-radius: 16px;
 
     &--active {
-      background: #FF6B35;
+      background: #2563EB;
     }
   }
 
   &__tab-text {
     font-size: 24px;
-    color: #666666;
+    color: #64748B;
 
     .profile__tab--active & {
       color: #fff;
