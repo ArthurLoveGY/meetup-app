@@ -1,7 +1,7 @@
 import { View, Text, ScrollView, Input } from '@tarojs/components'
 import { useLoad, usePullDownRefresh, stopPullDownRefresh } from '@tarojs/taro'
 import { useState, useCallback } from 'react'
-import { TripCard, EmptyState, LoadingView } from '../../components'
+import { TripCard, EmptyState, LoadingView, useRequireAuth } from '../../components'
 import { useTripStore } from '../../stores'
 import { platformService } from '../../platform'
 import { TRIP_TYPES } from '../../utils/constants'
@@ -92,9 +92,9 @@ export default function Discover() {
     platformService.navigateTo(`/pages/trip-detail/index?id=${trip.id}`)
   }, [])
 
-  const handleCreateTrip = useCallback(() => {
+  const handleCreateTrip = useRequireAuth(useCallback(() => {
     platformService.navigateTo('/pages/trip-create/index')
-  }, [])
+  }, []))
 
   if (isLoading && trips.length === 0) {
     return <LoadingView text='加载中...' />

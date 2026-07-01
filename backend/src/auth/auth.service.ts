@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common'
+import { Injectable, UnauthorizedException, Logger } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
@@ -8,8 +8,14 @@ import { User } from '../user/user.entity'
 const smsCodes = new Map<string, { code: string; expiresAt: number }>()
 const SMS_TTL_MS = 5 * 60 * 1000 // 5 minutes
 
+const WECHAT_APPID = process.env.WECHAT_APPID || 'wxe09aa37304e34fb4'
+const WECHAT_APP_SECRET = process.env.WECHAT_APP_SECRET || ''
+const WECHAT_CODE2SESSION_URL = 'https://api.weixin.qq.com/sns/jscode2session'
+
 @Injectable()
 export class AuthService {
+  private readonly logger = new Logger(AuthService.name)
+
   constructor(
     @InjectRepository(User)
     private userRepo: Repository<User>,
@@ -17,7 +23,7 @@ export class AuthService {
   ) {}
 
   async loginWithWechat(code: string): Promise<{ token: string; user: User }> {
-    const openId = 'mock_openid_' + code
+    const openId = await this.getWechatOpenId(code)
     let user = await this.userRepo.findOne({ where: { wechatOpenId: openId } })
 
     if (!user) {
@@ -31,6 +37,47 @@ export class AuthService {
 
     const token = this.jwtService.sign({ sub: user.id })
     return { token, user }
+  }
+
+  /**
+   * 调用微信 jscode2session 接口，用临时 code 换取 openid。
+   * 文档：https://developers.weixin.qq.com/miniprogram/dev/OpenApiDoc/user-login/code2Session.html
+   */
+  private async getWechatOpenId(code: string): Promise<string> {
+    if (!WECHAT_APP_SECRET) {
+      this.logger.warn('WECHAT_APP_SECRET 未配置，微信登录将失败。请在服务器环境变量中设置。')
+      throw new UnauthorizedException('微信登录配置缺失')
+    }
+
+    const url = `${WECHAT_CODE2SESSION_URL}?appid=${WECHAT_APPID}&secret=${WECHAT_APP_SECRET}&js_code=${encodeURIComponent(code)}&grant_type=authorization_code`
+
+    let res: Response
+    try {
+      res = await fetch(url, { method: 'GET' })
+    } catch (err) {
+      this.logger.error(`调用微信 jscode2session 网络失败: ${err}`)
+      throw new UnauthorizedException('微信登录失败，请稍后重试')
+    }
+
+    if (!res.ok) {
+      this.logger.error(`微信 jscode2session HTTP ${res.status}`)
+      throw new UnauthorizedException('微信登录失败，请稍后重试')
+    }
+
+    const data = await res.json()
+
+    // 微信返回错误时用 errcode + errmsg 而非 HTTP 状态码
+    if (data.errcode) {
+      this.logger.error(`微信 jscode2session 错误: errcode=${data.errcode}, errmsg=${data.errmsg}`)
+      throw new UnauthorizedException('微信登录失败，请重新打开小程序再试')
+    }
+
+    if (!data.openid) {
+      this.logger.error(`微信 jscode2session 返回数据缺少 openid: ${JSON.stringify(data)}`)
+      throw new UnauthorizedException('微信登录失败')
+    }
+
+    return data.openid
   }
 
   /**

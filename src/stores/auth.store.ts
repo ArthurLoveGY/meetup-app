@@ -16,6 +16,8 @@ interface AuthState {
   logout: () => Promise<void>
   checkAuth: () => Promise<void>
   updateProfile: (updates: Partial<User>) => Promise<void>
+  /** 检查登录状态，未登录时自动跳转登录页并返回 false。调用方只需 `if (!requireLogin()) return` */
+  requireLogin: () => boolean
 }
 
 const storedUser = Taro.getStorageSync('userInfo')
@@ -91,6 +93,22 @@ export const useAuthStore = create<AuthState>((set) => ({
       Taro.removeStorageSync('userInfo')
       set({ isLoggedIn: false, token: null, user: null })
     }
+  },
+
+  requireLogin: () => {
+    const loggedIn = !!Taro.getStorageSync('token')
+    if (!loggedIn) {
+      platformService.showToast({ title: '请先登录', icon: 'none' })
+      try {
+        const pages = Taro.getCurrentPages()
+        const current = pages[pages.length - 1]
+        const route = current?.route || ''
+        if (!route.startsWith('pages/login') && !route.startsWith('pages/phone-auth')) {
+          Taro.navigateTo({ url: '/pages/login/index' })
+        }
+      } catch { /* ignore */ }
+    }
+    return loggedIn
   },
 
   updateProfile: async (updates: Partial<User>) => {

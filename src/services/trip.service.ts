@@ -3,13 +3,13 @@ import type { Trip, TripWithCreator, TripDetail, CreateTripDTO, ParticipantStatu
 
 export const tripService = {
   async getFeed(page = 1, pageSize = 10): Promise<{ list: TripWithCreator[]; total: number }> {
-    return api.get('/trips/feed', { page, pageSize })
+    return api.get('/trips/feed', { page, limit: pageSize })
   },
 
   async getTrips(page = 1, pageSize = 10, filters?: {
     keyword?: string; type?: string; sort?: string; lat?: number; lng?: number;
   }): Promise<{ list: TripWithCreator[]; total: number }> {
-    const params: Record<string, unknown> = { page, pageSize }
+    const params: Record<string, unknown> = { page, limit: pageSize }
     if (filters?.keyword) params.keyword = filters.keyword
     if (filters?.type) params.type = filters.type
     if (filters?.sort) params.sort = filters.sort
@@ -19,11 +19,11 @@ export const tripService = {
   },
 
   async getMyTrips(page = 1, pageSize = 10): Promise<{ list: TripWithCreator[]; total: number }> {
-    return api.get('/trips/mine', { page, pageSize })
+    return api.get('/trips/mine', { page, limit: pageSize })
   },
 
   async getJoinedTrips(page = 1, pageSize = 10): Promise<{ list: TripWithCreator[]; total: number }> {
-    return api.get('/trips/joined', { page, pageSize })
+    return api.get('/trips/joined', { page, limit: pageSize })
   },
 
   async getTripDetail(tripId: string): Promise<TripDetail> {

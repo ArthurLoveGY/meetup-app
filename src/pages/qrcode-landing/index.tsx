@@ -8,7 +8,7 @@ import './index.scss'
 
 export default function QrcodeLanding() {
   const router = useRouter()
-  const { isLoggedIn } = useAuthStore()
+  const { isLoggedIn, requireLogin } = useAuthStore()
   const [isLoading, setIsLoading] = useState(true)
   const [tripId, setTripId] = useState<string | null>(null)
 
@@ -25,18 +25,11 @@ export default function QrcodeLanding() {
   })
 
   const handleViewTrip = useCallback(() => {
-    if (!isLoggedIn) {
-      platformService.redirectTo('/pages/login/index')
-      return
-    }
+    if (!requireLogin()) return
     if (tripId) {
       platformService.redirectTo(`/pages/trip-detail/index?id=${tripId}`)
     }
-  }, [isLoggedIn, tripId])
-
-  const handleLogin = useCallback(() => {
-    platformService.redirectTo('/pages/login/index')
-  }, [])
+  }, [requireLogin, tripId])
 
   if (isLoading) {
     return <LoadingView text='识别中...' />
@@ -61,7 +54,7 @@ export default function QrcodeLanding() {
                 </View>
               ) : (
                 <>
-                  <View className='qrcode-landing__btn' onClick={handleLogin}>
+                  <View className='qrcode-landing__btn' onClick={() => requireLogin()}>
                     <Text className='qrcode-landing__btn-text'>登录查看</Text>
                   </View>
                   <View className='qrcode-landing__btn qrcode-landing__btn--secondary' onClick={handleViewTrip}>

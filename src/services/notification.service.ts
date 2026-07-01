@@ -3,7 +3,7 @@ import type { Notification } from '../types'
 
 export const notificationService = {
   async getNotifications(page = 1, pageSize = 20): Promise<{ list: Notification[]; total: number }> {
-    return api.get('/notifications', { page, pageSize })
+    return api.get('/notifications', { page, limit: pageSize })
   },
 
   async getUnreadCount(): Promise<number> {

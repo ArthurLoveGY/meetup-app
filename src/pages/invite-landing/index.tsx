@@ -10,7 +10,7 @@ import './index.scss'
 
 export default function InviteLanding() {
   const router = useRouter()
-  const { isLoggedIn } = useAuthStore()
+  const { isLoggedIn, requireLogin } = useAuthStore()
   const [trip, setTrip] = useState<{
     id: string
     title: string
@@ -45,18 +45,11 @@ export default function InviteLanding() {
   })
 
   const handleJoin = useCallback(() => {
-    if (!isLoggedIn) {
-      platformService.redirectTo('/pages/login/index')
-      return
-    }
+    if (!requireLogin()) return
     if (trip) {
       platformService.navigateTo(`/pages/trip-detail/index?id=${trip.id}`)
     }
-  }, [isLoggedIn, trip])
-
-  const handleLogin = useCallback(() => {
-    platformService.redirectTo('/pages/login/index')
-  }, [])
+  }, [requireLogin, trip])
 
   if (isLoading) {
     return <LoadingView text='加载中...' />
@@ -126,7 +119,7 @@ export default function InviteLanding() {
           </View>
         ) : (
           <>
-            <View className='invite-landing__btn' onClick={handleLogin}>
+            <View className='invite-landing__btn' onClick={() => requireLogin()}>
               <Text className='invite-landing__btn-text'>登录后参加</Text>
             </View>
             <View className='invite-landing__btn invite-landing__btn--secondary' onClick={handleJoin}>
