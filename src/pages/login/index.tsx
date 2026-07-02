@@ -38,7 +38,7 @@ export default function Login() {
       await login()
       platformService.showToast({ title: '登录成功', icon: 'success' })
       setTimeout(() => {
-        platformService.redirectTo('/pages/profile/index')
+        platformService.navigateTo('/pages/index/index')
       }, 1500)
     } catch {
       platformService.showToast({ title: '登录失败', icon: 'error' })

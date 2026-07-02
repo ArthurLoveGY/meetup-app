@@ -1,5 +1,5 @@
 import { View, Text, ScrollView } from '@tarojs/components'
-import { useLoad, usePullDownRefresh, stopPullDownRefresh } from '@tarojs/taro'
+import { useDidShow, usePullDownRefresh, stopPullDownRefresh } from '@tarojs/taro'
 import { useCallback } from 'react'
 import { TripCard, EmptyState, LoadingView } from '../../components'
 import { useTripStore } from '../../stores'
@@ -14,7 +14,7 @@ export default function TripFeed() {
     fetchFeedTrips(refresh)
   }, [fetchFeedTrips])
 
-  useLoad(() => {
+  useDidShow(() => {
     doFetch(true)
   })
 
