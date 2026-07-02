@@ -12,7 +12,24 @@ export default function PhoneAuth() {
   const [smsCode, setSmsCode] = useState('')
   const [countdown, setCountdown] = useState(0)
   const [step, setStep] = useState<'phone' | 'code'>('phone')
+  const [agreed, setAgreed] = useState(false)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  const checkAgreement = useCallback((): boolean => {
+    if (!agreed) {
+      platformService.showToast({ title: '请先阅读并同意《用户协议》和《隐私政策》', icon: 'none' })
+      return false
+    }
+    return true
+  }, [agreed])
+
+  const handleToggleAgree = useCallback(() => {
+    setAgreed((prev) => !prev)
+  }, [])
+
+  const handleViewAgreement = useCallback((type: 'user-agreement' | 'privacy-policy') => {
+    platformService.navigateTo(`/pages/agreement/index?type=${type}`)
+  }, [])
 
   // 卸载时清理倒计时，避免内存泄漏与对已卸载组件 setState
   useEffect(() => {
@@ -25,6 +42,7 @@ export default function PhoneAuth() {
   }, [])
 
   const handleSendCode = useCallback(async () => {
+    if (!checkAgreement()) return
     const validation = validatePhone(phone)
     if (!validation.valid) {
       platformService.showToast({ title: validation.message!, icon: 'error' })
@@ -51,9 +69,10 @@ export default function PhoneAuth() {
     } catch {
       platformService.showToast({ title: '发送验证码失败', icon: 'error' })
     }
-  }, [phone])
+  }, [phone, checkAgreement])
 
   const handleVerify = useCallback(async () => {
+    if (!checkAgreement()) return
     if (!smsCode || smsCode.length !== 6) {
       platformService.showToast({ title: '请输入6位验证码', icon: 'error' })
       return
@@ -67,7 +86,7 @@ export default function PhoneAuth() {
     } catch {
       platformService.showToast({ title: '验证失败', icon: 'error' })
     }
-  }, [phone, smsCode, login])
+  }, [phone, smsCode, login, checkAgreement])
 
   const handlePhoneChange = useCallback((e: { detail: { value: string } }) => {
     setPhone(e.detail.value)
@@ -148,6 +167,20 @@ export default function PhoneAuth() {
             </View>
           </View>
         )}
+      </View>
+
+      <View className='phone-auth__footer'>
+        <View className='phone-auth__agreement' onClick={handleToggleAgree}>
+          <View className={`phone-auth__checkbox ${agreed ? 'phone-auth__checkbox--checked' : ''}`}>
+            {agreed && <Text className='phone-auth__checkbox-icon'>✓</Text>}
+          </View>
+          <Text className='phone-auth__footer-text'>
+            我已阅读并同意
+            <Text className='phone-auth__link' onClick={(e) => { e.stopPropagation(); handleViewAgreement('user-agreement') }}>《用户协议》</Text>
+            和
+            <Text className='phone-auth__link' onClick={(e) => { e.stopPropagation(); handleViewAgreement('privacy-policy') }}>《隐私政策》</Text>
+          </Text>
+        </View>
       </View>
     </View>
   )

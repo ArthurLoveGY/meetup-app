@@ -6,6 +6,8 @@ import { useAuthStore } from '../../stores'
 import { platformService } from '../../platform'
 import { getSmartDate, getDayOfWeek } from '../../utils/date'
 import { getTripTypeLabel, getCostTypeLabel } from '../../utils/permission'
+import { resolveImageUrl } from '../../services/config'
+import { api } from '../../services/request'
 import './index.scss'
 
 export default function InviteLanding() {
@@ -27,20 +29,33 @@ export default function InviteLanding() {
   useLoad(() => {
     const tripId = router.params.id
     if (tripId) {
-      setTimeout(() => {
-        setTrip({
-          id: tripId,
-          title: '周六青城山轻徒步',
-          type: 'travel',
-          startTime: '2026-06-14T09:00:00Z',
-          locationName: '青城山前山',
-          costType: 'aa',
-          estimatedCost: 150,
-          participantCount: 5,
-          creator: { id: 'user_1', nickname: '小明' },
+      // 从后端获取真实行程数据，替代之前的硬编码 mock 数据
+      api.get<any>(`/trips/${tripId}`)
+        .then((data) => {
+          setTrip({
+            id: data.id,
+            title: data.title,
+            type: data.type,
+            startTime: data.startTime,
+            locationName: data.locationName,
+            costType: data.costType,
+            estimatedCost: data.estimatedCost,
+            participantCount: data.participants?.length || 0,
+            creator: {
+              id: data.creator?.id || '',
+              nickname: data.creator?.nickname || '未知用户',
+              avatarUrl: resolveImageUrl(data.creator?.avatarUrl),
+            },
+          })
         })
-        setIsLoading(false)
-      }, 500)
+        .catch(() => {
+          setTrip(null)
+        })
+        .finally(() => {
+          setIsLoading(false)
+        })
+    } else {
+      setIsLoading(false)
     }
   })
 

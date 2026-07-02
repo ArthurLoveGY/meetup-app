@@ -45,6 +45,7 @@ export default defineAppConfig({
     'pages/admin-stats/index',
     'pages/account-deletion/index',
     'pages/data-export/index',
+    'pages/agreement/index',
   ],
   tabBar: {
     color: '#999',

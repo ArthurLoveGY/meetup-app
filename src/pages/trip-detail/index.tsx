@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, Image } from '@tarojs/components'
-import { useLoad, useRouter } from '@tarojs/taro'
+import { useLoad, useRouter, useShareAppMessage, useShareTimeline } from '@tarojs/taro'
 import { useState, useCallback } from 'react'
 import {
   UserAvatar,
@@ -64,12 +64,36 @@ export default function TripDetail() {
     }
   }, [currentTrip, leaveTrip])
 
-  const handleShare = useCallback(async () => {
-    if (!currentTrip) return
-    await platformService.shareToFriend({
+  // 微信小程序分享：必须通过 useShareAppMessage 钩子注册分享内容
+  // 用户点击右上角“...”菜单中的“转发”按钮时触发
+  useShareAppMessage(() => {
+    if (!currentTrip) {
+      return { title: 'TripCircle - 行程朋友圈', path: '/pages/index/index' }
+    }
+    return {
       title: currentTrip.title,
       path: `/pages/trip-detail/index?id=${currentTrip.id}`,
-    })
+      imageUrl: currentTrip.coverUrl,
+    }
+  })
+
+  // 分享到朋友圈
+  useShareTimeline(() => {
+    if (!currentTrip) {
+      return { title: 'TripCircle - 行程朋友圈' }
+    }
+    return {
+      title: currentTrip.title,
+      query: `id=${currentTrip.id}`,
+      imageUrl: currentTrip.coverUrl,
+    }
+  })
+
+  const handleShare = useCallback(() => {
+    if (!currentTrip) return
+    // 微信小程序中，转发只能由用户主动点击“...”菜单中的“转发”触发，
+    // 或通过 <Button openType="share"> 触发。这里提示用户操作方式。
+    platformService.showToast({ title: '请点击右上角“···”选择“转发”', icon: 'none' })
   }, [currentTrip])
 
   const handleEdit = useCallback(() => {

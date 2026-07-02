@@ -1,6 +1,8 @@
 .phone-auth {
   min-height: 100vh;
   background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
 
   &__header {
     display: flex;
@@ -26,6 +28,7 @@
   }
 
   &__content {
+    flex: 1;
     padding: 48px 32px;
   }
 
@@ -111,6 +114,51 @@
 
   &__resend-text {
     font-size: 28px;
+    color: #2563EB;
+  }
+
+  &__footer {
+    padding: 32px;
+    margin-top: auto;
+  }
+
+  &__agreement {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  &__checkbox {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #CBD5E1;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-right: 12px;
+    margin-top: 4px;
+
+    &--checked {
+      background: #2563EB;
+      border-color: #2563EB;
+    }
+  }
+
+  &__checkbox-icon {
+    font-size: 24px;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  &__footer-text {
+    font-size: 24px;
+    color: #94A3B8;
+    flex: 1;
+  }
+
+  &__link {
     color: #2563EB;
   }
 }

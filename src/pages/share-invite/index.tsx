@@ -1,5 +1,6 @@
 import { View, Text } from '@tarojs/components'
-import { useLoad, useRouter } from '@tarojs/taro'
+import { useLoad, useRouter, useShareAppMessage, useShareTimeline } from '@tarojs/taro'
+import Taro from '@tarojs/taro'
 import { useState, useCallback } from 'react'
 import { UserAvatar, LoadingView, EmptyState } from '../../components'
 import { useTripStore } from '../../stores'
@@ -22,25 +23,48 @@ export default function ShareInvite() {
     }
   })
 
-  const handleShareToFriend = useCallback(async () => {
-    if (!currentTrip) return
-    await platformService.shareToFriend({
-      title: currentTrip.title,
+  // 微信小程序分享钩子：注册转发到好友的分享内容
+  useShareAppMessage(() => {
+    if (!currentTrip) {
+      return { title: 'TripCircle - 行程朋友圈', path: '/pages/index/index' }
+    }
+    return {
+      title: `邀请你参加：${currentTrip.title}`,
       path: `/pages/trip-detail/index?id=${currentTrip.id}`,
-    })
-  }, [currentTrip])
+      imageUrl: currentTrip.coverUrl,
+    }
+  })
 
-  const handleShareToTimeline = useCallback(async () => {
-    if (!currentTrip) return
-    await platformService.shareToTimeline({
-      title: currentTrip.title,
-      path: `/pages/trip-detail/index?id=${currentTrip.id}`,
-    })
-  }, [currentTrip])
+  // 分享到朋友圈
+  useShareTimeline(() => {
+    if (!currentTrip) {
+      return { title: 'TripCircle - 行程朋友圈' }
+    }
+    return {
+      title: `邀请你参加：${currentTrip.title}`,
+      query: `id=${currentTrip.id}`,
+      imageUrl: currentTrip.coverUrl,
+    }
+  })
+
+  const handleShareToFriend = useCallback(() => {
+    platformService.showToast({ title: '请点击右上角“···”选择“转发”', icon: 'none' })
+  }, [])
+
+  const handleShareToTimeline = useCallback(() => {
+    platformService.showToast({ title: '请点击右上角“···”选择“分享到朋友圈”', icon: 'none' })
+  }, [])
 
   const handleCopyLink = useCallback(async () => {
     if (!currentTrip) return
-    platformService.showToast({ title: '链接已复制', icon: 'success' })
+    try {
+      await Taro.setClipboardData({
+        data: `/pages/trip-detail/index?id=${currentTrip.id}`,
+      })
+      platformService.showToast({ title: '链接已复制', icon: 'success' })
+    } catch {
+      platformService.showToast({ title: '复制失败', icon: 'error' })
+    }
   }, [currentTrip])
 
   const handleGeneratePoster = useCallback(() => {
